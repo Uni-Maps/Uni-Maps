@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389595736799",
+    "project_id": "winhacks2021-d8486",
+    "storage_bucket": "winhacks2021-d8486.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389595736799:android:7ad9e1b3dc0ed51e90576a",
+        "android_client_info": {
+          "package_name": "com.example.winhacks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389595736799-p6ojg2a041km0i1pq9e2t9seg3vdspck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjGNEkPBE9ipeiQ9ZSpasoW4KZVPlOEeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389595736799-p6ojg2a041km0i1pq9e2t9seg3vdspck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
