@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'
     show BuildContext, MaterialApp, StatelessWidget, Widget, runApp;
-import 'package:winhacks/home_screen.dart' show HomeScreen;
+import './screens/home_screen.dart'
+    show HomeScreen; // ./ Means it is in the same directory, helps with pathing
 
 void main() => runApp(Home());
 
