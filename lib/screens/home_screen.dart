@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sign_button/sign_button.dart';
 
+import 'gmap.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -73,7 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <Widget>[
                                 RaisedButton.icon(
                                   onPressed: () {
-                                    print('Action event Line 76');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => GMap()));
                                   },
                                   icon: Icon(Icons.local_activity, size: 100),
                                   color: Colors.blue,
