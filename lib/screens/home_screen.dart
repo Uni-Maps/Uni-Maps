@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sign_button/sign_button.dart';
+import 'package:winhacks/screens/addEvent.dart';
 
 import 'gmap.dart';
 
@@ -112,7 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <Widget>[
                                 RaisedButton.icon(
                                   onPressed: () {
-                                    print('Action Event Line 110');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => AddEvent()));
                                   },
                                   icon: Icon(Icons.edit, size: 100),
                                   color: Colors.blue,
@@ -149,12 +153,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('First Name, Last Name',
+                                Text('Edmund Lui',
                                     style: TextStyle(
                                         fontFamily: "Montserrat Medium",
                                         color: Colors.white,
                                         fontSize: 20)),
-                                Text('Student ID',
+                                Text('Wilfrid Laurier University',
                                     style: TextStyle(
                                         fontFamily: "Montserrat Medium",
                                         color: Colors.white,
