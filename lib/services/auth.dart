@@ -2,8 +2,8 @@ import 'package:winhacks/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:winhacks/models/user.dart';
 
-class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+// class AuthService {
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //create user object based on FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {

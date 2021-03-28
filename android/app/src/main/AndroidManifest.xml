@@ -3,6 +3,10 @@
    <application
         android:label="winhacks"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name='com.google.android.geo.API_KEY'
+            android:value="AIzaSyA3Q_fC72DqAo48EhcA0WgHAYQ9Hf6PhBM"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
