@@ -12,7 +12,8 @@ class _AddEventState extends State<AddEvent> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-        body: Column(children: <Widget>[
+        body: SingleChildScrollView(
+            child: Column(children: <Widget>[
       Stack(
         children: [
           Container(
@@ -101,6 +102,6 @@ class _AddEventState extends State<AddEvent> {
               context, MaterialPageRoute(builder: (context) => HomeScreen()));
         },
       ))
-    ]));
+    ])));
   }
 }

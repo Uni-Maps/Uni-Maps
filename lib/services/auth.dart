@@ -1,6 +1,8 @@
 import 'package:winhacks/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:winhacks/models/user.dart';
+import 'package:winhacks/services/database.dart';
+
+import 'database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -46,6 +48,10 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
+      // create a new document for the user with the uid
+      await DatabaseService(uid: user.uid).createUser("", email, password, "");
+
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
