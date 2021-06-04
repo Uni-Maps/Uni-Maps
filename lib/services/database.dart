@@ -21,4 +21,17 @@ class DatabaseService {
       'about': about,
     });
   }
+
+  Future addEvent(String eventCreator, String name, String date, String time,
+      String building, String room, String description) async {
+    return await eventCollection.document(uid).setData({
+      'eventCreator': eventCreator,
+      'name': name,
+      'date': date,
+      'time': time,
+      'building': building,
+      'room': room,
+      'description': description,
+    });
+  }
 }

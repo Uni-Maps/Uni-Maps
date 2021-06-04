@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:winhacks/models/user.dart';
 import 'package:winhacks/screens/home_screen.dart';
+import 'package:winhacks/services/database.dart';
 
 class AddEvent extends StatefulWidget {
   @override
@@ -7,8 +10,15 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
+  String name;
+  String date;
+  String time;
+  String building;
+  String room;
+  String description;
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -43,51 +53,58 @@ class _AddEventState extends State<AddEvent> {
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
-              decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.event),
-            labelText: 'Event Name',
-          ))),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              icon: Icon(Icons.event),
+              labelText: 'Event Name',
+            ),
+            onChanged: (val) => setState(() => name = val),
+          )),
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
+              onChanged: (val) => setState(() => date = val),
               decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.date_range),
-            labelText: 'Date',
-          ))),
+                border: OutlineInputBorder(),
+                icon: Icon(Icons.date_range),
+                labelText: 'Date',
+              ))),
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
+              onChanged: (val) => setState(() => time = val),
               decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.access_time),
-            labelText: 'Time',
-          ))),
+                border: OutlineInputBorder(),
+                icon: Icon(Icons.access_time),
+                labelText: 'Time',
+              ))),
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
+              onChanged: (val) => setState(() => building = val),
               decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.location_on),
-            labelText: 'Building',
-          ))),
+                border: OutlineInputBorder(),
+                icon: Icon(Icons.location_on),
+                labelText: 'Building',
+              ))),
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
+              onChanged: (val) => setState(() => room = val),
               decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.location_on),
-            labelText: 'Room',
-          ))),
+                border: OutlineInputBorder(),
+                icon: Icon(Icons.location_on),
+                labelText: 'Room',
+              ))),
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
+              onChanged: (val) => setState(() => description = val),
               decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.description),
-            labelText: 'Description',
-          ))),
+                border: OutlineInputBorder(),
+                icon: Icon(Icons.description),
+                labelText: 'Description',
+              ))),
       Center(
           child: RaisedButton(
         color: Colors.blue[400],
@@ -97,9 +114,10 @@ class _AddEventState extends State<AddEvent> {
           'Create Event',
           style: TextStyle(color: Colors.white),
         ),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        onPressed: () async {
+          await DatabaseService().addEvent(
+              user.uid, name, date, time, building, room, description);
+          Navigator.pop(context);
         },
       ))
     ])));
