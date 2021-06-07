@@ -57,6 +57,11 @@ flutter:
   assets:
     - assets/images/top_header.png
     - assets/images/profile.jpg
+    - assets/images/people/buildings.png
+    - assets/images/people/create_account_person.png
+    - assets/images/people/forgot_password_person.png
+    - assets/images/people/login_person.png
+    - assets/images/people/welcome_page_person.png
     
   
     
