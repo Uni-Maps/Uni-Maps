@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 class GMap extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _GMapState extends State<GMap> {
   Set<Marker> _markers = HashSet<Marker>();
 
   GoogleMapController mapController;
+  final Location location = new Location();
 
   final LatLng _center = const LatLng(43.474864, -80.527977);
 
@@ -78,25 +80,65 @@ class _GMapState extends State<GMap> {
       _markers.add(marker6);
       _markers.add(marker7);
     });
+
+    DateTime now = new DateTime.now();
+    DateTime date = new DateTime(now.year, now.month, now.day);
+    print(date);
+  }
+
+  void _animateToUser() async {
+    Location location = new Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    _locationData = await location.getLocation();
+
+    mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(_locationData.latitude, _locationData.longitude),
+      zoom: 16.0,
+    )));
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Events'),
-          backgroundColor: Colors.green[700],
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 16.0,
-          ),
-          markers: _markers,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Events"),
       ),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 16.0,
+        ),
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+        markers: _markers,
+        mapType: MapType.hybrid,
+      ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.location_searching),
+          onPressed: () {
+            _animateToUser();
+          }),
     );
   }
 }

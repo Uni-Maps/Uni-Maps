@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DatabaseService {
   DatabaseService({this.uid});
@@ -23,7 +24,7 @@ class DatabaseService {
   }
 
   Future addEvent(String eventCreator, String name, String date, String time,
-      String building, String room, String description) async {
+      String building, String room, LatLng location, String description) async {
     return await eventCollection.document(uid).setData({
       'eventCreator': eventCreator,
       'name': name,
@@ -31,6 +32,7 @@ class DatabaseService {
       'time': time,
       'building': building,
       'room': room,
+      'location': location,
       'description': description,
     });
   }

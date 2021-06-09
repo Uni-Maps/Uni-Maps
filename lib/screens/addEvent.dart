@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
-import 'package:winhacks/screens/home_screen.dart';
 import 'package:winhacks/services/database.dart';
+
+Map<String, LatLng> locations = {
+  "Athletic Complex": LatLng(43.4752126803426, -80.52565140859437),
+  "Alumni hall": LatLng(43.47298689536837, -80.52843465805189),
+  "John Aird Centre": LatLng(43.4744298195108, -80.52822392085788),
+  "Bricker Academic Building": LatLng(43.47271767912157, -80.52650914819121),
+  "Arts": LatLng(43.47395449251259, -80.52939711505255),
+  "Career Centre": LatLng(43.473962974582854, -80.52428699478007),
+  "Dr. Alvin Woods Building": LatLng(43.47333433383295, -80.52951804984667),
+  "Dining Hall": LatLng(43.474317344058605, -80.52865752351649),
+  "Fred Nichols Campus Centre": LatLng(43.47330507679226, -80.52876233841724),
+  "Lazaridis Hall": LatLng(43.47509607968329, -80.52945601978989),
+  "Martin Luther University College":
+      LatLng(43.471931677814105, -80.5287371368633),
+  "Science Building": LatLng(43.473276933715916, -80.52516355453936),
+  "Frank C. Peters Building": LatLng(43.47370370306412, -80.53038475509386),
+  "Paul Martin Centre": LatLng(43.47417303304065, -80.52882452180214),
+  "Schlegel building": LatLng(43.47325522257778, -80.53038099685122),
+};
 
 class AddEvent extends StatefulWidget {
   @override
@@ -13,9 +32,10 @@ class _AddEventState extends State<AddEvent> {
   String name;
   String date;
   String time;
-  String building;
+  String locaation;
   String room;
   String description;
+  String location;
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -81,7 +101,7 @@ class _AddEventState extends State<AddEvent> {
       Padding(
           padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
           child: TextField(
-              onChanged: (val) => setState(() => building = val),
+              onChanged: (val) => setState(() => location = val),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 icon: Icon(Icons.location_on),
@@ -115,8 +135,9 @@ class _AddEventState extends State<AddEvent> {
           style: TextStyle(color: Colors.white),
         ),
         onPressed: () async {
-          await DatabaseService().addEvent(
-              user.uid, name, date, time, building, room, description);
+          print(locations["Dining Hall"]);
+          await DatabaseService().addEvent(user.uid, name, date, time, location,
+              room, locations[location], description);
           Navigator.pop(context);
         },
       ))
