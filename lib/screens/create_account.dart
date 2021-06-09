@@ -42,10 +42,11 @@ class _Create_AccountState extends State<Create_Account> {
       ),
       // Uni-Maps Title
       Expanded(
-          // Creating a container so that the width can fill the entire screen
+
+          // Padding makes it so that is an invisible barrier
           child: Padding(
-              // Padding makes it so that is an invisible barrier
               padding: const EdgeInsets.fromLTRB(10, 65, 10, 20),
+              // Creating a container so that the width can fill the entire screen
               child: Container(
                   // Making width fit the screen depending on the screen size
                   width: MediaQuery.of(context).size.width,
@@ -55,6 +56,7 @@ class _Create_AccountState extends State<Create_Account> {
                     RichText(
                       // Aligning text to be at the center
                       // textAlign: TextAlign.center,
+                      // Add Text Spans to edit each section of the entire sentence
                       text: TextSpan(children: [
                         TextSpan(
                             text: "Create Account",
