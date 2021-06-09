@@ -62,7 +62,7 @@ flutter:
     - assets/images/people/forgot_password_person.png
     - assets/images/people/login_person.png
     - assets/images/people/welcome_page_person.png
-    
+    - assets/images/background.png
   
     
   fonts:
@@ -73,6 +73,10 @@ flutter:
     - family: Montserrat Medium
       fonts:
         - asset: assets/fonts/mo_me.ttf
+    
+    - family: Lato Bold
+      fonts:
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
   
   # assets:
   #   - images/a_dot_burr.jpeg
