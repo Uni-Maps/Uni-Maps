@@ -77,6 +77,10 @@ flutter:
     - family: Lato Bold
       fonts:
         - asset: assets/fonts/Lato/Lato-Bold.ttf
+    
+    - family: Lato Regular
+      fonts: 
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
   
   # assets:
   #   - images/a_dot_burr.jpeg

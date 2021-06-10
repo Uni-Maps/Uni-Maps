@@ -48,7 +48,7 @@ class _Create_AccountState extends State<Create_Account> {
 
               // Padding makes it so that is an invisible barrier
               child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 65, 10, 20),
+                  padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
                   // Creating a container so that the width can fill the entire screen
                   child: Container(
                       // Making width fit the screen depending on the screen size
@@ -76,7 +76,7 @@ class _Create_AccountState extends State<Create_Account> {
                             TextSpan(
                                 text: "Join the community",
                                 style: TextStyle(
-                                    fontFamily: "Lato Bold",
+                                    fontFamily: "Lato Regular",
                                     color: Colors.white54,
                                     fontSize: 16))
                           ]),
@@ -84,7 +84,7 @@ class _Create_AccountState extends State<Create_Account> {
                         // Add in buttons/labels/texts between the title and the image at the bottom
                         // Username
                         Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
                             child: TextField(
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
@@ -103,7 +103,7 @@ class _Create_AccountState extends State<Create_Account> {
                                         TextStyle(color: Colors.white)))),
                         // Email
                         Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.fromLTRB(40, 20, 40, 10),
                             child: TextField(
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
@@ -124,7 +124,7 @@ class _Create_AccountState extends State<Create_Account> {
 
                         // FIGURE OUT WHY THE BORDERS OF THE TEXTFIELD ARE BLACK AND NOT WHITE
                         Padding(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
                             child: TextField(
                                 obscureText: isHiddenPassword,
                                 style: TextStyle(color: Colors.white),
@@ -151,42 +151,105 @@ class _Create_AccountState extends State<Create_Account> {
                                     labelText: 'Password',
                                     labelStyle:
                                         TextStyle(color: Colors.white)))),
+                        // Button
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              ElevatedButton(
+                                onPressed: () {
+                                  print("Line 135");
+                                },
+                                child: Text(
+                                  "               Sign Up               ",
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                style: ButtonStyle(
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.black87),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white),
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(18),
+                                            side: BorderSide(
+                                                color: Colors.white10)))),
+                              )
+                            ],
+                          ),
+                        ),
 
                         // Text for the terms and services
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(children: [
-                            TextSpan(
-                                text:
-                                    "By creating an account, you agree with our Terms and Service & Privacy Policy",
-                                style: TextStyle(
-                                    fontFamily: "Lato Bold",
-                                    color: Colors.white54,
-                                    fontSize: 16))
-                          ]),
-                        ),
+                        Container(
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(25, 20, 25, 0),
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text:
+                                            "By creating an account, you agree with our Terms and Service & Privacy Policy",
+                                        style: TextStyle(
+                                            fontFamily: "Lato Regular",
+                                            color: Colors.white54,
+                                            fontSize: 14))
+                                  ]),
+                                ),
+                              )
+                            ])),
                         // Adding in the image for the person
-
-                        Image(
+                        Expanded(
+                          // Flex is used to expand compared to the other flexes (3x bigger than the other one)
+                          flex: 10,
+                          child: Image(
                             image: AssetImage(
-                                "assets/images/people/create_account_person.png")),
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(children: [
-                            TextSpan(
-                                text: "Already have an account? ",
-                                style: TextStyle(
-                                    fontFamily: "Lato Bold",
-                                    color: Colors.white,
-                                    fontSize: 16)),
-                            TextSpan(
-                                text: "Log in",
-                                style: TextStyle(
-                                    fontFamily: "Lato Bold",
-                                    color: Color(0xff2EDEA6),
-                                    fontSize: 16))
-                          ]),
+                                "assets/images/people/create_account_person.png"),
+                          ),
                         ),
+
+                        // Log In button and text
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                              decoration:
+                                  BoxDecoration(color: Color(0xff493657)),
+                              child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      // In case any padding is ever needed
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      child: Container(
+                                          child: RichText(
+                                        textAlign: TextAlign.center,
+                                        text: TextSpan(children: [
+                                          TextSpan(
+                                              text: "Already have an account? ",
+                                              style: TextStyle(
+                                                  fontFamily: "Lato Regular",
+                                                  color: Colors.white54,
+                                                  fontSize: 14)),
+                                          // Turn into a button
+                                          TextSpan(
+                                              text: "Log In",
+                                              style: TextStyle(
+                                                  fontFamily: "Lato Bold",
+                                                  color: Color(
+                                                      0xff2EDEA6), // Green
+                                                  fontSize: 14)),
+                                        ]),
+                                      )),
+                                    ),
+                                  ])),
+                        )
                       ]))))
         ]));
   }
