@@ -160,13 +160,13 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                               child: Row(children: <Widget>[
                             Padding(
                               // In case any padding is ever needed
-                              padding: EdgeInsets.fromLTRB(0, 0, 40, 10),
+                              padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
                             ), //Text button
                             TextButton(
                               style: TextButton.styleFrom(
                                 primary: Colors.white54,
                                 textStyle: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 17,
                                     color: Colors.white,
                                     fontFamily: "Lato Regular"),
                               ),
@@ -251,7 +251,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                       style: TextButton.styleFrom(
                                         primary: Color(0xff2EDEA6),
                                         textStyle: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 17.5,
                                             color: Colors.white,
                                             fontFamily: "Lato Bold"),
                                       ),
