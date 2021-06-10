@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
@@ -28,6 +30,7 @@ class _Create_AccountState extends State<Create_Account> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+
         // Add members in here
         resizeToAvoidBottomInset: false,
         // Stacks the members so that everything else appears above the background
@@ -43,12 +46,28 @@ class _Create_AccountState extends State<Create_Account> {
                       fit: BoxFit.fill)),
             ),
           ),
+
+          // Back button
+          Container(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
+              child: Container(
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    print("line 58");
+                  },
+                  iconSize: 32,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
           // Uni-Maps Title
           SafeArea(
-
               // Padding makes it so that is an invisible barrier
               child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
                   // Creating a container so that the width can fill the entire screen
                   child: Container(
                       // Making width fit the screen depending on the screen size
@@ -158,7 +177,7 @@ class _Create_AccountState extends State<Create_Account> {
                             children: <Widget>[
                               ElevatedButton(
                                 onPressed: () {
-                                  print("Line 135");
+                                  print("Line 180");
                                 },
                                 child: Text(
                                   "               Sign Up               ",
@@ -232,21 +251,26 @@ class _Create_AccountState extends State<Create_Account> {
                                         textAlign: TextAlign.center,
                                         text: TextSpan(children: [
                                           TextSpan(
-                                              text: "Already have an account? ",
+                                              text: "Already have an account?",
                                               style: TextStyle(
                                                   fontFamily: "Lato Regular",
                                                   color: Colors.white54,
-                                                  fontSize: 14)),
-                                          // Turn into a button
-                                          TextSpan(
-                                              text: "Log In",
-                                              style: TextStyle(
-                                                  fontFamily: "Lato Bold",
-                                                  color: Color(
-                                                      0xff2EDEA6), // Green
-                                                  fontSize: 14)),
+                                                  fontSize: 16)),
                                         ]),
                                       )),
+                                    ), //Text button
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        primary: Color(0xff2EDEA6),
+                                        textStyle: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontFamily: "Lato Bold"),
+                                      ),
+                                      onPressed: () {
+                                        print("Line 271");
+                                      },
+                                      child: Text('Log In'),
                                     ),
                                   ])),
                         )
