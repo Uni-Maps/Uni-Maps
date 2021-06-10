@@ -5,15 +5,15 @@ import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/shared/constants.dart';
 
-class Create_Account extends StatefulWidget {
+class SignIn_Account extends StatefulWidget {
   final Function toggleView;
-  Create_Account({this.toggleView});
+  SignIn_Account({this.toggleView});
 
   @override
-  _Create_AccountState createState() => _Create_AccountState();
+  _SignIn_AccountState createState() => _SignIn_AccountState();
 }
 
-class _Create_AccountState extends State<Create_Account> {
+class _SignIn_AccountState extends State<SignIn_Account> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -81,7 +81,7 @@ class _Create_AccountState extends State<Create_Account> {
                           // Add Text Spans to edit each section of the entire sentence
                           text: TextSpan(children: [
                             TextSpan(
-                                text: "Create Account",
+                                text: "Welcome Back!",
                                 style: TextStyle(
                                     fontFamily: "Lato Bold",
                                     color: Colors.white,
@@ -93,7 +93,7 @@ class _Create_AccountState extends State<Create_Account> {
                           // textAlign: TextAlign.center,
                           text: TextSpan(children: [
                             TextSpan(
-                                text: "Join the community",
+                                text: "We’re happy to see you again!",
                                 style: TextStyle(
                                     fontFamily: "Lato Regular",
                                     color: Colors.white54,
@@ -120,30 +120,12 @@ class _Create_AccountState extends State<Create_Account> {
                                     labelText: 'Username',
                                     labelStyle:
                                         TextStyle(color: Colors.white)))),
-                        // Email
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
-                            child: TextField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                    enabledBorder: new OutlineInputBorder(
-                                      borderSide:
-                                          new BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    labelText: 'Email',
-                                    labelStyle:
-                                        TextStyle(color: Colors.white)))),
+
                         // Password
 
                         // FIGURE OUT WHY THE BORDERS OF THE TEXTFIELD ARE BLACK AND NOT WHITE
                         Padding(
-                            padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
+                            padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
                             child: TextField(
                                 obscureText: isHiddenPassword,
                                 style: TextStyle(color: Colors.white),
@@ -170,7 +152,33 @@ class _Create_AccountState extends State<Create_Account> {
                                     labelText: 'Password',
                                     labelStyle:
                                         TextStyle(color: Colors.white)))),
-                        // Button
+
+                        // Forgot Password
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                              child: Row(children: <Widget>[
+                            Padding(
+                              // In case any padding is ever needed
+                              padding: EdgeInsets.fromLTRB(0, 0, 40, 10),
+                            ), //Text button
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                primary: Colors.white54,
+                                textStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: "Lato Regular"),
+                              ),
+                              onPressed: () {
+                                print("Line 200");
+                              },
+                              child: Text('Forgot your password?'),
+                            ),
+                          ])),
+                        ),
+
+                        //Login Button
                         Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,7 +188,7 @@ class _Create_AccountState extends State<Create_Account> {
                                   print("Line 180");
                                 },
                                 child: Text(
-                                  "               Sign Up               ",
+                                  "               Login               ",
                                   style: TextStyle(fontSize: 14),
                                 ),
                                 style: ButtonStyle(
@@ -202,36 +210,16 @@ class _Create_AccountState extends State<Create_Account> {
                           ),
                         ),
 
-                        // Text for the terms and services
-                        Container(
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(25, 20, 25, 0),
-                                child: RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                        text:
-                                            "By creating an account, you agree with our Terms and Service & Privacy Policy",
-                                        style: TextStyle(
-                                            fontFamily: "Lato Regular",
-                                            color: Colors.white54,
-                                            fontSize: 14))
-                                  ]),
-                                ),
-                              )
-                            ])),
                         // Adding in the image for the person
                         Expanded(
-                          // Flex is used to expand compared to the other flexes (3x bigger than the other one)
-                          flex: 13,
-                          child: Image(
-                            image: AssetImage(
-                                "assets/images/people/create_account_person.png"),
-                          ),
-                        ),
+                            // Flex is used to expand compared to the other flexes (3x bigger than the other one)
+                            flex: 10,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 80, 10, 0),
+                              child: Image.asset(
+                                  "assets/images/people/login_person.png",
+                                  fit: BoxFit.fill),
+                            )),
 
                         // Log In button and text
                         Expanded(
@@ -270,7 +258,7 @@ class _Create_AccountState extends State<Create_Account> {
                                       onPressed: () {
                                         print("Line 271");
                                       },
-                                      child: Text('Log In'),
+                                      child: Text('Register'),
                                     ),
                                   ])),
                         )
