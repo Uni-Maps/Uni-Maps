@@ -62,6 +62,7 @@ flutter:
     - assets/images/people/forgot_password_person.png
     - assets/images/people/login_person.png
     - assets/images/people/welcome_page_person.png
+    - assets/images/email.png
     - assets/images/background.png
   
     
