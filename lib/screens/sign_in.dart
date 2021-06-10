@@ -215,7 +215,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                             // Flex is used to expand compared to the other flexes (3x bigger than the other one)
                             flex: 10,
                             child: Padding(
-                              padding: EdgeInsets.fromLTRB(0, 80, 10, 0),
+                              padding: EdgeInsets.fromLTRB(0, 100, 10, 0),
                               child: Image.asset(
                                   "assets/images/people/login_person.png",
                                   fit: BoxFit.fill),
@@ -223,7 +223,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
 
                         // Log In button and text
                         Expanded(
-                          flex: 3,
+                          flex: 2,
                           child: Container(
                               decoration:
                                   BoxDecoration(color: Color(0xff493657)),

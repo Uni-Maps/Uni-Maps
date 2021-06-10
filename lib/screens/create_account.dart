@@ -225,13 +225,14 @@ class _Create_AccountState extends State<Create_Account> {
                             ])),
                         // Adding in the image for the person
                         Expanded(
-                          // Flex is used to expand compared to the other flexes (3x bigger than the other one)
-                          flex: 13,
-                          child: Image(
-                            image: AssetImage(
-                                "assets/images/people/create_account_person.png"),
-                          ),
-                        ),
+                            // Flex is used to expand compared to the other flexes (3x bigger than the other one)
+                            flex: 10,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+                              child: Image.asset(
+                                  "assets/images/people/create_account_person.png",
+                                  fit: BoxFit.fill),
+                            )),
 
                         // Log In button and text
                         Expanded(
