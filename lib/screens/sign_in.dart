@@ -239,7 +239,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                         textAlign: TextAlign.center,
                                         text: TextSpan(children: [
                                           TextSpan(
-                                              text: "Already have an account?",
+                                              text: "Don’t have an account?",
                                               style: TextStyle(
                                                   fontFamily: "Lato Regular",
                                                   color: Colors.white54,
