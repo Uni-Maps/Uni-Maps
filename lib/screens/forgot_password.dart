@@ -89,12 +89,12 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                           ]),
                         ),
 
-                        // Adding in the image for the person
+                        // Adding in the image for the email
                         Expanded(
                             // Flex is used to expand compared to the other flexes (3x bigger than the other one)
-                            flex: 2,
+                            flex: 7,
                             child: Padding(
-                              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                               child: Image.asset(
                                 "assets/images/people/email.png",
                               ),
@@ -105,21 +105,62 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                           textAlign: TextAlign.center,
                           text: TextSpan(children: [
                             TextSpan(
-                                text:
-                                    "Enter the email address associated with your account.",
+                                text: "Enter the email address associated",
                                 style: TextStyle(
                                     fontFamily: "Lato Bold",
                                     color: Colors.white,
-                                    fontSize: 25))
+                                    fontSize: 20)),
                           ]),
                         ),
-
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(children: [
+                            TextSpan(
+                                text: "with your account.",
+                                style: TextStyle(
+                                    fontFamily: "Lato Bold",
+                                    color: Colors.white,
+                                    fontSize: 20))
+                          ]),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
+                            child: TextField(
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                    enabledBorder: new OutlineInputBorder(
+                                      borderSide:
+                                          new BorderSide(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.white),
+                                      borderRadius: BorderRadius.circular(14),
+                                    ),
+                                    labelText: 'Email',
+                                    labelStyle:
+                                        TextStyle(color: Colors.white)))),
+                        // We will email you the link text
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: RichText(
+                            // textAlign: TextAlign.center,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                  text: "We will email you the link to",
+                                  style: TextStyle(
+                                      fontFamily: "Lato Regular",
+                                      color: Colors.white54,
+                                      fontSize: 16))
+                            ]),
+                          ),
+                        ),
                         RichText(
                           // textAlign: TextAlign.center,
                           text: TextSpan(children: [
                             TextSpan(
-                                text:
-                                    "We will email you the link to reset your password.",
+                                text: "reset your password.",
                                 style: TextStyle(
                                     fontFamily: "Lato Regular",
                                     color: Colors.white54,
@@ -128,84 +169,10 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                         ),
                         // Add in buttons/labels/texts between the title and the image at the bottom
                         // Username
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
-                            child: TextField(
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                    enabledBorder: new OutlineInputBorder(
-                                      borderSide:
-                                          new BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    labelText: 'Username',
-                                    labelStyle:
-                                        TextStyle(color: Colors.white)))),
-
-                        // Password
-
-                        // FIGURE OUT WHY THE BORDERS OF THE TEXTFIELD ARE BLACK AND NOT WHITE
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
-                            child: TextField(
-                                obscureText: isHiddenPassword,
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                    enabledBorder: new OutlineInputBorder(
-                                      borderSide:
-                                          new BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(14),
-                                    ),
-                                    suffixIcon: InkWell(
-                                      onTap: _togglePasswordView,
-                                      child: Icon(
-                                        Icons.visibility,
-                                        color: this.isHiddenPassword
-                                            ? Colors.grey
-                                            : Colors.blue,
-                                      ),
-                                    ),
-                                    labelText: 'Password',
-                                    labelStyle:
-                                        TextStyle(color: Colors.white)))),
-
-                        // Forgot Password
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                              child: Row(children: <Widget>[
-                            Padding(
-                              // In case any padding is ever needed
-                              padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
-                            ), //Text button
-                            TextButton(
-                              style: TextButton.styleFrom(
-                                primary: Colors.white54,
-                                textStyle: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontFamily: "Lato Regular"),
-                              ),
-                              onPressed: () {
-                                print("Line 200");
-                              },
-                              child: Text('Forgot your password?'),
-                            ),
-                          ])),
-                        ),
 
                         //Login Button
-                        Container(
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 30, 0, 60),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
@@ -214,7 +181,7 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                   print("Line 180");
                                 },
                                 child: Text(
-                                  "               Login               ",
+                                  "            Send Instructions            ",
                                   style: TextStyle(fontSize: 14),
                                 ),
                                 style: ButtonStyle(
