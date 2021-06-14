@@ -5,6 +5,7 @@ import 'package:winhacks/screens/forgot_password.dart';
 import 'package:winhacks/screens/sign_in.dart';
 import 'package:winhacks/screens/home/home.dart';
 import 'package:winhacks/screens/home_screen.dart';
+import 'package:winhacks/screens/user_page.dart';
 import 'package:winhacks/screens/wrapper.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         //home: Wrapper(),
-        home: Forgot_Password(),
+        home: User_page(),
       ),
     );
   }
