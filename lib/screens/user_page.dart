@@ -66,7 +66,7 @@ class _Userpage_State extends State<User_page> {
           ),
           // Uni-Maps Title
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
             child: CarouselSlider(
               options: CarouselOptions(height: 200.0),
               items: [1, 2, 3, 4, 5].map((i) {
@@ -75,7 +75,13 @@ class _Userpage_State extends State<User_page> {
                     return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 10.0),
-                        decoration: BoxDecoration(color: Colors.blue),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10.0),
+                                bottomRight: Radius.circular(10.0),
+                                topLeft: Radius.circular(10.0),
+                                bottomLeft: Radius.circular(10.0)),
+                            color: Colors.blue),
                         child: Text(
                           'text $i',
                           style: TextStyle(fontSize: 16.0),
