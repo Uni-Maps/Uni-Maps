@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DatabaseService {
   DatabaseService({this.uid});
@@ -13,6 +12,7 @@ class DatabaseService {
   final CollectionReference userCollection =
       Firestore.instance.collection('users');
 
+  //create new user and update if needed
   Future createUser(
       String name, String email, String password, String about) async {
     return await userCollection.document(uid).setData({
@@ -23,8 +23,17 @@ class DatabaseService {
     });
   }
 
-  Future addEvent(String eventCreator, String name, String date, String time,
-      String building, String room, LatLng location, String description) async {
+  //add event to database
+  Future addEvent(
+      String eventCreator,
+      String name,
+      String date,
+      String time,
+      String building,
+      String room,
+      double lat,
+      double long,
+      String description) async {
     return await eventCollection.document(uid).setData({
       'eventCreator': eventCreator,
       'name': name,
@@ -32,8 +41,26 @@ class DatabaseService {
       'time': time,
       'building': building,
       'room': room,
-      'location': location,
+      'latitude': lat,
+      'longitude': long,
       'description': description,
     });
+  }
+
+  //get current events to display
+  Future getCurrentEvents() async {
+    List currEvents = [];
+
+    try {
+      await eventCollection.getDocuments().then((querySnapshot) {
+        querySnapshot.documents.forEach((element) {
+          currEvents.add(element.data);
+        });
+      });
+      return currEvents;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:collection';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import '../services/database.dart';
 
 class GMap extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class _GMapState extends State<GMap> {
 
   GoogleMapController mapController;
   final Location location = new Location();
+
+  List currEventsList = [];
+  List eventIDs = [];
 
   final LatLng _center = const LatLng(43.474864, -80.527977);
 
@@ -71,21 +76,26 @@ class _GMapState extends State<GMap> {
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
 
-    setState(() {
-      _markers.add(marker1);
-      _markers.add(marker2);
-      _markers.add(marker3);
-      _markers.add(marker4);
-      _markers.add(marker5);
-      _markers.add(marker6);
-      _markers.add(marker7);
-    });
+    for (int i = 0; i < currEventsList.length; i++) {
+      final Marker marker = Marker(
+          markerId: MarkerId(eventIDs[i]),
+          position: LatLng(
+              currEventsList[i]['latitude'], currEventsList[i]['longitude']),
+          infoWindow: InfoWindow(
+              title: currEventsList[i]['name'],
+              snippet: currEventsList[i]['description']));
 
-    DateTime now = new DateTime.now();
-    DateTime date = new DateTime(now.year, now.month, now.day);
-    print(date);
+      setState(() {
+        _markers.add(marker);
+      });
+    }
+
+    // DateTime now = new DateTime.now();
+    // DateTime date = new DateTime(now.year, now.month, now.day);
+    // print(date);
   }
 
+  //currently have this function... not sure why it didnt show before??
   void _animateToUser() async {
     Location location = new Location();
 
@@ -119,26 +129,41 @@ class _GMapState extends State<GMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Events"),
-      ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 16.0,
-        ),
-        myLocationEnabled: true,
-        myLocationButtonEnabled: true,
-        markers: _markers,
-        mapType: MapType.hybrid,
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
-          onPressed: () {
-            _animateToUser();
-          }),
-    );
+    CollectionReference currEvents = Firestore.instance.collection('events');
+
+    return StreamBuilder(
+        stream: currEvents.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return Text("no value");
+          } else {
+            for (var event in snapshot.data.documents) {
+              currEventsList.add(event);
+              eventIDs.add(event.documentID);
+            }
+            print(currEvents);
+            return Scaffold(
+              appBar: AppBar(
+                title: Text("Events"),
+              ),
+              body: GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _center,
+                  zoom: 16.0,
+                ),
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true,
+                markers: _markers,
+                mapType: MapType.hybrid,
+              ),
+              floatingActionButton: FloatingActionButton(
+                  child: Icon(Icons.location_searching),
+                  onPressed: () {
+                    _animateToUser();
+                  }),
+            );
+          }
+        });
   }
 }
