@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sign_button/sign_button.dart';
 import 'package:winhacks/screens/addEvent.dart';
+import 'package:winhacks/services/auth.dart';
 
 import 'gmap.dart';
 
@@ -10,10 +11,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Uni-Maps'),
+        backgroundColor: Colors.blue[400],
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: Text('logout'),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          )
+        ],
+      ),
       body: Stack(
         children: <Widget>[
           Container(
