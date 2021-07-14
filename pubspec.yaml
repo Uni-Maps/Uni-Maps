@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   provider: ^5.0.0
+  carousel_slider: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +58,13 @@ flutter:
   assets:
     - assets/images/top_header.png
     - assets/images/profile.jpg
-    
+    - assets/images/people/buildings.png
+    - assets/images/people/create_account_person.png
+    - assets/images/people/forgot_password_person.png
+    - assets/images/people/login_person.png
+    - assets/images/people/welcome_page_person.png
+    - assets/images/email.png
+    - assets/images/background.png
   
     
   fonts:
@@ -68,6 +75,14 @@ flutter:
     - family: Montserrat Medium
       fonts:
         - asset: assets/fonts/mo_me.ttf
+    
+    - family: Lato Bold
+      fonts:
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
+    
+    - family: Lato Regular
+      fonts: 
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
   
   # assets:
   #   - images/a_dot_burr.jpeg
