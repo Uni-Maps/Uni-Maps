@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'
     show BuildContext, MaterialApp, StatelessWidget, Widget, runApp;
 import 'package:winhacks/screens/log_in.dart';
+import 'package:winhacks/screens/wrapper.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         //home: Wrapper(),
-        home: SignIn_Account(),
+        home: Wrapper(),
       ),
     );
   }
