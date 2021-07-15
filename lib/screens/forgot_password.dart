@@ -18,9 +18,7 @@ class _ForgotPassword_State extends State<Forgot_Password> {
   final _formKey = GlobalKey<FormState>();
 
   //text field state
-  String username = '';
   String email = '';
-  String password = '';
   String error = '';
 
   bool isHiddenPassword = true;
@@ -130,7 +128,7 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                 Padding(
                                     padding:
                                         EdgeInsets.fromLTRB(40, 20, 40, 20),
-                                    child: TextField(
+                                    child: TextFormField(
                                         style: TextStyle(color: Colors.white),
                                         decoration: InputDecoration(
                                             enabledBorder:
@@ -147,8 +145,14 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                                   BorderRadius.circular(14),
                                             ),
                                             labelText: 'Email',
-                                            labelStyle: TextStyle(
-                                                color: Colors.white)))),
+                                            labelStyle:
+                                                TextStyle(color: Colors.white)),
+                                        validator: (val) => val.isEmpty
+                                            ? 'Enter an email'
+                                            : null,
+                                        onChanged: (val) {
+                                          setState(() => email = val);
+                                        })),
                                 // We will email you the link text
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -188,6 +192,8 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                       ElevatedButton(
                                         onPressed: () {
                                           print("Line 180");
+                                          _auth.sendPasswordResetEmail(
+                                              email: email);
                                         },
                                         child: Text(
                                           "            Send Instructions            ",

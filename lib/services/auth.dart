@@ -68,4 +68,8 @@ class AuthService {
       return null;
     }
   }
+
+  void sendPasswordResetEmail({String email}) {
+    _auth.sendPasswordResetEmail(email: email);
+  }
 }
