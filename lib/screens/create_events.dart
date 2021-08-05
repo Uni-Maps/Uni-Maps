@@ -19,6 +19,10 @@ String _valueSaved3 = '';
 String _valueChanged4 = '';
 String _valueToValidate4 = '';
 String _valueSaved4 = '';
+List locationItem = [
+  'Lazaridis',
+  'Concourse',
+];
 
 TimeOfDay selectedTime = TimeOfDay.now();
 
@@ -136,6 +140,9 @@ class _Create_EventsState extends State<Create_Events> {
                     Padding(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
                         child: TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          minLines: 1, //Normal textInputField will be displayed
+                          maxLines: 5,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               enabledBorder: new OutlineInputBorder(
