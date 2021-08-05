@@ -3,6 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/shared/constants.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+
+//String _initialValue = '';
+String _valueChanged1 = '';
+String _valueToValidate1 = '';
+String _valueSaved1 = '';
+String _valueChanged2 = '';
+String _valueToValidate2 = '';
+String _valueSaved2 = '';
+String _valueChanged3 = '';
+String _valueToValidate3 = '';
+String _valueSaved3 = '';
+String _valueChanged4 = '';
+String _valueToValidate4 = '';
+String _valueSaved4 = '';
 
 class Create_Events extends StatefulWidget {
   final Function toggleViewLogin;
@@ -124,8 +139,75 @@ class _Create_EventsState extends State<Create_Events> {
                               ),
                               labelText: 'Event Description',
                               labelStyle: TextStyle(color: Colors.white)),
-                        ))
+                        )),
+
                     // Date
+
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
+                      child: DateTimePicker(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                            enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            labelText: 'Date',
+                            labelStyle: TextStyle(color: Colors.white)),
+                        initialValue: DateTime.now().toString(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                        dateLabelText: 'Date',
+                        onChanged: (val) => print(val),
+                        validator: (val) {
+                          print(val);
+                          return null;
+                        },
+                        onSaved: (val) => print(val),
+                      ),
+                    ),
+
+                    // Time
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
+                      child: DateTimePicker(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                            enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            labelText: 'Time',
+                            labelStyle: TextStyle(color: Colors.white)),
+
+                        type: DateTimePickerType.time,
+                        //timePickerEntryModeInput: true,
+                        //controller: _controller4,
+                        initialValue:
+                            TimeOfDay.now().toString(), //_initialValue,
+                        icon: Icon(Icons.access_time),
+                        timeLabelText: "Time",
+                        use24HourFormat: false,
+                        locale: Locale('pt', 'BR'),
+                        onChanged: (val) =>
+                            setState(() => _valueChanged4 = val),
+                        validator: (val) {
+                          setState(() => _valueToValidate4 = val ?? '');
+                          return null;
+                        },
+                        onSaved: (val) =>
+                            setState(() => _valueSaved4 = val ?? ''),
+                      ),
+                    ),
+
                     // Location Drop Down
                     // Category Drop Down
                   ],
