@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/shared/constants.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:intl/intl.dart';
 
 //String _initialValue = '';
 String _valueChanged1 = '';
@@ -19,6 +20,8 @@ String _valueChanged4 = '';
 String _valueToValidate4 = '';
 String _valueSaved4 = '';
 
+TimeOfDay selectedTime = TimeOfDay.now();
+
 class Create_Events extends StatefulWidget {
   final Function toggleViewLogin;
 
@@ -29,7 +32,13 @@ class Create_Events extends StatefulWidget {
 }
 
 class _Create_EventsState extends State<Create_Events> {
+  TextEditingController timeinput = TextEditingController();
   @override
+  void initState() {
+    timeinput.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
@@ -171,44 +180,60 @@ class _Create_EventsState extends State<Create_Events> {
                       ),
                     ),
 
-                    // Time
+                    //Time
                     Padding(
-                      padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
-                      child: DateTimePicker(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                            enabledBorder: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            labelText: 'Time',
-                            labelStyle: TextStyle(color: Colors.white)),
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
+                        child: Center(
+                            child: TextField(
+                          controller:
+                              timeinput, //editing controller of this TextField
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                              // icon: Icon(Icons.timer), //icon of text field
+                              labelText: "Time", //label text of field
+                              enabledBorder: new OutlineInputBorder(
+                                borderSide: new BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              labelStyle: TextStyle(color: Colors.white)),
 
-                        type: DateTimePickerType.time,
-                        //timePickerEntryModeInput: true,
-                        //controller: _controller4,
-                        initialValue:
-                            TimeOfDay.now().toString(), //_initialValue,
-                        icon: Icon(Icons.access_time),
-                        timeLabelText: "Time",
-                        use24HourFormat: false,
-                        locale: Locale('pt', 'BR'),
-                        onChanged: (val) =>
-                            setState(() => _valueChanged4 = val),
-                        validator: (val) {
-                          setState(() => _valueToValidate4 = val ?? '');
-                          return null;
-                        },
-                        onSaved: (val) =>
-                            setState(() => _valueSaved4 = val ?? ''),
-                      ),
-                    ),
+                          readOnly:
+                              true, //set it true, so that user will not able to edit text
+                          onTap: () async {
+                            TimeOfDay pickedTime = await showTimePicker(
+                              initialTime: TimeOfDay.now(),
+                              context: context,
+                            );
+
+                            if (pickedTime != null) {
+                              print(
+                                  pickedTime.format(context)); //output 10:51 PM
+                              DateTime parsedTime = DateFormat.jm()
+                                  .parse(pickedTime.format(context).toString());
+                              //converting to DateTime so that we can further format on different pattern.
+                              print(
+                                  parsedTime); //output 1970-01-01 22:53:00.000
+                              String formattedTime =
+                                  DateFormat('HH:mm').format(parsedTime);
+                              print(formattedTime); //output 14:59
+                              //DateFormat() is from intl package, you can format the time on any pattern you need.
+
+                              setState(() {
+                                timeinput.text =
+                                    formattedTime; //set the value of text field.
+                              });
+                            } else {
+                              print("Time is not selected");
+                            }
+                          },
+                        ))),
 
                     // Location Drop Down
+
                     // Category Drop Down
                   ],
                 ),
