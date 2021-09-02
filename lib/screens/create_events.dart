@@ -132,7 +132,7 @@ class _Create_EventsState extends State<Create_Events> {
                           bottomRight: const Radius.circular(20.0),
                           topRight: const Radius.circular(20.0))),
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
+                    padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
                     child: Column(
                       children: <Widget>[
                         // Event Name Input Box
