@@ -7,6 +7,7 @@ import 'package:winhacks/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
+import 'package:winhacks/screens/navigation_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       child: MaterialApp(
         //home: Wrapper(),
-        home: Create_Events(),
+        home: Navigation_Bar(),
       ),
     );
   }
