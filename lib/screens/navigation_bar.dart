@@ -6,6 +6,15 @@ class Navigation_Bar extends StatefulWidget {
 }
 
 class _Navigation_BarState extends State<Navigation_Bar> {
+  // Bottom navigation bar index
+  int _selectedIndex = 0;
+
+  void _onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
