@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:winhacks/screens/gmap.dart';
 
 class Navigation_Bar extends StatefulWidget {
   @override
@@ -9,6 +10,19 @@ class _Navigation_BarState extends State<Navigation_Bar> {
   // Bottom navigation bar index
   int _selectedIndex = 0;
 
+  List<Widget> _widgetOptions = <Widget>[
+    // Different pages here
+    // User_Page(),
+    // GMap(),
+    // Calendar(),
+    // Saved()
+
+    Text("Home"),
+    GMap(),
+    Text("Calendar"),
+    Text("Saved"),
+  ];
+
   void _onItemTap(int index) {
     setState(() {
       _selectedIndex = index;
@@ -18,6 +32,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -37,6 +52,12 @@ class _Navigation_BarState extends State<Navigation_Bar> {
             title: Text("Saved"),
           )
         ],
+        backgroundColor: Color(0xff493657),
+        fixedColor: Colors.white,
+        unselectedItemColor: Colors.white60,
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        onTap: _onItemTap,
       ),
     );
   }
