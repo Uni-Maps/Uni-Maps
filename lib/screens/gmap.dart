@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import '../services/database.dart';
+import 'package:winhacks/screens/navigation_bar.dart';
 
 class GMap extends StatefulWidget {
   @override
