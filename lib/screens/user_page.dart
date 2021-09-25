@@ -6,15 +6,15 @@ import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/shared/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class User_page extends StatefulWidget {
+class User_Page extends StatefulWidget {
   final Function toggleView;
-  User_page({this.toggleView});
+  User_Page({this.toggleView});
 
   @override
-  _Userpage_State createState() => _Userpage_State();
+  _UserPage_State createState() => _UserPage_State();
 }
 
-class _Userpage_State extends State<User_page> {
+class _UserPage_State extends State<User_Page> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 

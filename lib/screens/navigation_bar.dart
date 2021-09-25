@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winhacks/screens/gmap.dart';
+import 'package:winhacks/screens/user_page.dart';
 
 class Navigation_Bar extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
     // Calendar(),
     // Saved()
 
-    Text("Home"),
+    User_Page(),
     GMap(),
     Text("Calendar"),
     Text("Saved"),
