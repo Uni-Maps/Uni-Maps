@@ -31,6 +31,20 @@ class _UserPage_State extends State<User_Page> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+              iconSize: 40,
+            ),
+            Container(
+                // Add search bar in here
+
+                ),
+          ],
+          backgroundColor: Color(0xff493657),
+        ),
 
         // Add members in here
         resizeToAvoidBottomInset: false,
@@ -49,21 +63,7 @@ class _UserPage_State extends State<User_Page> {
           ),
 
           // Back button
-          Container(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(15, 45, 15, 0),
-              child: Container(
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    print("line 58");
-                  },
-                  iconSize: 32,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
+
           // Uni-Maps Title
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
