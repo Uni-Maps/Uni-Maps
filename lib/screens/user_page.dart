@@ -32,9 +32,14 @@ class _UserPage_State extends State<User_Page> {
 
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {},
+            iconSize: 40,
+          ),
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.person),
+              icon: const Icon(Icons.notifications),
               onPressed: () {},
               iconSize: 40,
             ),
