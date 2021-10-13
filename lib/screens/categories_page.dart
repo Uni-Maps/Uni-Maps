@@ -6,17 +6,16 @@ import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/shared/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:winhacks/screens/styles.dart';
-import 'package:winhacks/screens/categories_page.dart';
 
-class User_Page extends StatefulWidget {
+class Categories_Page extends StatefulWidget {
   final Function toggleView;
-  User_Page({this.toggleView});
+  Categories_Page({this.toggleView});
 
   @override
-  _UserPage_State createState() => _UserPage_State();
+  _CategoriesPage_State createState() => _CategoriesPage_State();
 }
 
-class _UserPage_State extends State<User_Page> {
+class _CategoriesPage_State extends State<Categories_Page> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -84,7 +83,7 @@ class _UserPage_State extends State<User_Page> {
                       ),
                       onPressed: () {
                         print("Line 200");
-                        //widget.toggleViewCategoriesPage();
+                        // widget.toggleViewForgotPassword();
                       },
                       child: Text('Categories'),
                     ),
