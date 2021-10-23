@@ -137,6 +137,18 @@ class _OrganizersPage_State extends State<Organizers_Page> {
                       fontSize: 20),
                 ),
               )),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+                  child: Text(
+                    'Follow the most popular organizers and get notified when they post events',
+                    style: TextStyle(
+                        fontFamily: "Roboto Regular",
+                        color: Colors.white,
+                        fontSize: 14),
+                  ),
+                ),
+              ),
 
               // Categories
               Column(
