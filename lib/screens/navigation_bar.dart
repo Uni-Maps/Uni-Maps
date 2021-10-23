@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:winhacks/screens/gmap.dart';
 import 'package:winhacks/screens/user_page.dart';
 import 'package:winhacks/screens/categories_page.dart';
+import 'package:winhacks/screens/organizers_page.dart';
 
 class Navigation_Bar extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
     GMap(),
     Categories_Page(),
     //Text("Calendar"),
-    Text("Saved"),
+    Organizers_Page(),
   ];
 
   void _onItemTap(int index) {
