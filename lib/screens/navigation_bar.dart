@@ -19,7 +19,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
     // Calendar(),
     // Saved()
 
-    User_Page(),
+    UserPage(),
     GMap(),
     Categories_Page(),
     //Text("Calendar"),
