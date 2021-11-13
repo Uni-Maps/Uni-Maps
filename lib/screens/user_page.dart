@@ -1,11 +1,10 @@
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:winhacks/screens/categories_page.dart';
 import 'package:winhacks/screens/organizers_page.dart';
 import 'package:winhacks/screens/YourPage.dart';
+import 'package:winhacks/services/auth.dart';
 
 class UserPage extends StatefulWidget {
   final Function toggleView;
@@ -16,6 +15,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  final AuthService _auth = AuthService();
+
   // List eventsList = [];
   // List eventIDs = [];
 
@@ -38,7 +39,7 @@ class _UserPageState extends State<UserPage> {
                 child: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: () {},
-                  iconSize: 0,
+                  iconSize: 35,
                 ),
               ),
               IconButton(
@@ -46,6 +47,12 @@ class _UserPageState extends State<UserPage> {
                 onPressed: () {},
                 iconSize: 35,
               ),
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+              )
             ],
             backgroundColor: Color(0xff493657),
             bottom: TabBar(
