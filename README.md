@@ -7,8 +7,8 @@ Uni-Maps was ititially made for Winhacks 2021 but has grown on to do Application
 ## Prerequisites 
 
 - [VSCode](https://code.visualstudio.com/) - Visual Studio Code Editor (You may choose to use Android Studio or Xcode if you like)
-- [Phone] - Android or iOS device 
 - [Flutter](https://flutter.dev/) - Flutter SDK
+- Phone - Android or iOS device 
 
 ## Installation 
 
