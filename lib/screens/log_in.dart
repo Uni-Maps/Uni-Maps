@@ -1,9 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
-import 'package:winhacks/shared/constants.dart';
 
 class SignIn_Account extends StatefulWidget {
   final Function toggleViewSignup;

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart'
     show BuildContext, MaterialApp, StatelessWidget, Widget, runApp;
 import 'package:winhacks/screens/create_events.dart';
+import 'package:winhacks/screens/home/home.dart';
 import 'package:winhacks/screens/log_in.dart';
 import 'package:winhacks/screens/navigation_bar.dart';
+import 'package:winhacks/screens/user_page.dart';
 import 'package:winhacks/screens/wrapper.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +21,9 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       initialData: null,
       child: MaterialApp(
-        //home: Wrapper(),
-        home: Navigation_Bar(),
-      ),
+          //home: Wrapper(),
+          home: Wrapper() //Navigation_Bar(),
+          ),
     );
   }
 }

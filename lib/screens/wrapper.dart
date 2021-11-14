@@ -3,7 +3,8 @@ import 'package:winhacks/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
-import '../screens/home_screen.dart';
+import 'package:winhacks/screens/navigation_bar.dart';
+import 'package:winhacks/screens/user_page.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     } else {
-      return HomeScreen();
+      return Navigation_Bar();
     }
   }
 }

@@ -1,6 +1,4 @@
-import 'package:winhacks/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:winhacks/screens/authenticate/register.dart';
 
 import '../create_account.dart';
 import '../forgot_password.dart';
