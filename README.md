@@ -2,7 +2,7 @@
 
 ## Product Description 🔬
 
-Uni-Maps was ititially made for Winhacks 2021 but has grown on to do Application Programming course. The applications goal is to make item recognition simple for users of all ages whetherthey are a kid or adult. As a student, I am still continually learning new things such as about the resisters and their color codes when I took CP220 which was a struggle and took a long time to make a project because much of my time was used for finding the correct chips. With this app, I want to solve this problem in a world where the ideation of new and innovative products are entering this world by making an application that can detect the object in focus within an image and assist the user in being able do identify what it is. It utilizes Apples machine learning models and XCodes Augmented reality application development kit to label items within the screen in AR. 
+Uni-Maps was ititially made for Winhacks 2021 but has grown on to our business. The main goal of our product is to increase student engagement within a campus by making the information of clubs, events, etc. more accessible to students through a single platform instead of having to go through multiple social media posts to find the exact information.
 
 ## Prerequisites 
 
