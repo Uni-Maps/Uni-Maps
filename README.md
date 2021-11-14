@@ -33,6 +33,7 @@ $ flutter doctor
 ```
 
 where you will need to see `Flutter`, `VS Code` (or Android Studio), and `Connected Device` set to 3 and lists your connected device
+
 ![flutter_doctor](https://user-images.githubusercontent.com/48935039/141689023-2b5d0094-5ef2-4e5a-8471-b7054f69ca25.png)
 
 Once you have these set up, run the next command
