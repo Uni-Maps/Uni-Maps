@@ -1,29 +1,51 @@
+// ignore_for_file: camel_case_types
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:intl/intl.dart';
-
-//String _initialValue = '';
-String _valueChanged1 = '';
-String _valueToValidate1 = '';
-String _valueSaved1 = '';
-String _valueChanged2 = '';
-String _valueToValidate2 = '';
-String _valueSaved2 = '';
-String _valueChanged3 = '';
-String _valueToValidate3 = '';
-String _valueSaved3 = '';
-String _valueChanged4 = '';
-String _valueToValidate4 = '';
-String _valueSaved4 = '';
+import 'package:provider/provider.dart';
+import 'package:winhacks/models/user.dart';
+import 'package:winhacks/services/database.dart';
 
 // Location Drop down Variables
-String chooseValue;
 List locationItem = [
-  'Lazaridis',
-  'Concourse',
+  "Athletic Complex",
+  "Alumni hall",
+  "John Aird Centre",
+  "Bricker Academic Building",
+  "Arts",
+  "Career Centre",
+  "Dr. Alvin Woods Building",
+  "Dining Hall",
+  "Fred Nichols Campus Centre",
+  "Lazaridis Hall",
+  "Martin Luther University College",
+  "Science Building",
+  "Frank C. Peters Building",
+  "Paul Martin Centre",
+  "Schlegel building",
 ];
+
+// List of coordinates for locations
+Map<String, List<double>> locations = {
+  "Athletic Complex": [43.4752126803426, -80.52565140859437],
+  "Alumni hall": [43.47298689536837, -80.52843465805189],
+  "John Aird Centre": [43.4744298195108, -80.52822392085788],
+  "Bricker Academic Building": [43.47271767912157, -80.52650914819121],
+  "Arts": [43.47395449251259, -80.52939711505255],
+  "Career Centre": [43.473962974582854, -80.52428699478007],
+  "Dr. Alvin Woods Building": [43.47333433383295, -80.52951804984667],
+  "Dining Hall": [43.474317344058605, -80.52865752351649],
+  "Fred Nichols Campus Centre": [43.47330507679226, -80.52876233841724],
+  "Lazaridis Hall": [43.47509607968329, -80.52945601978989],
+  "Martin Luther University College": [43.471931677814105, -80.5287371368633],
+  "Science Building": [43.473276933715916, -80.52516355453936],
+  "Frank C. Peters Building": [43.47370370306412, -80.53038475509386],
+  "Paul Martin Centre": [43.47417303304065, -80.52882452180214],
+  "Schlegel building": [43.47325522257778, -80.53038099685122],
+};
 
 // Category Drop down Variables
 String chooseCategory;
@@ -51,6 +73,14 @@ class Create_Events extends StatefulWidget {
 
 class _Create_EventsState extends State<Create_Events> {
   TextEditingController timeinput = TextEditingController();
+
+  String name;
+  String date;
+  String time;
+  String room;
+  String description;
+  String location;
+
   @override
   void initState() {
     timeinput.text = ""; //set the initial value of text field
@@ -58,7 +88,7 @@ class _Create_EventsState extends State<Create_Events> {
   }
 
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    final user = Provider.of<User>(context);
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -137,6 +167,7 @@ class _Create_EventsState extends State<Create_Events> {
                         Padding(
                             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                             child: TextFormField(
+                              onChanged: (val) => setState(() => name = val),
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
                                   enabledBorder: new OutlineInputBorder(
@@ -156,6 +187,8 @@ class _Create_EventsState extends State<Create_Events> {
                         Padding(
                             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                             child: TextFormField(
+                              onChanged: (val) =>
+                                  setState(() => description = val),
                               keyboardType: TextInputType.multiline,
                               minLines:
                                   1, //Normal textInputField will be displayed
@@ -197,7 +230,8 @@ class _Create_EventsState extends State<Create_Events> {
                             firstDate: DateTime(2000),
                             lastDate: DateTime(2100),
                             dateLabelText: 'Date',
-                            onChanged: (val) => print(val),
+                            onChanged: (val) =>
+                                setState(() => date = val.toString()),
                             validator: (val) {
                               print(val);
                               return null;
@@ -252,6 +286,7 @@ class _Create_EventsState extends State<Create_Events> {
                                   setState(() {
                                     timeinput.text =
                                         formattedTime; //set the value of text field.
+                                    time = pickedTime.format(context);
                                   });
                                 } else {
                                   print("Time is not selected");
@@ -277,7 +312,7 @@ class _Create_EventsState extends State<Create_Events> {
                               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                               child: DropdownButton(
                                 focusColor: Colors.white,
-                                value: chooseValue,
+                                value: location,
                                 elevation: 5,
                                 isExpanded: true,
                                 style: TextStyle(
@@ -298,9 +333,9 @@ class _Create_EventsState extends State<Create_Events> {
                                       fontFamily: "Lato Regular"),
                                 ),
                                 dropdownColor: Color(0xff5E4770),
-                                onChanged: (newValue) {
+                                onChanged: (val) {
                                   setState(() {
-                                    chooseValue = newValue;
+                                    location = val;
                                   });
                                 },
                               ),
@@ -364,8 +399,18 @@ class _Create_EventsState extends State<Create_Events> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                                 child: ElevatedButton(
-                                  onPressed: () {
-                                    print("Line 367");
+                                  onPressed: () async {
+                                    await DatabaseService().addEvent(
+                                        user.uid,
+                                        name,
+                                        date,
+                                        time,
+                                        location,
+                                        room ?? "add room box",
+                                        locations[location][0],
+                                        locations[location][1],
+                                        description);
+                                    Navigator.pop(context);
                                   },
                                   child: Text(
                                     "       Create Event       ",
