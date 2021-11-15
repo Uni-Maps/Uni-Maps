@@ -6,6 +6,26 @@ import 'package:winhacks/screens/organizers_page.dart';
 import 'package:winhacks/screens/YourPage.dart';
 import 'package:winhacks/services/auth.dart';
 
+final recentEvents = [
+  "hi",
+  "there",
+  "how",
+  "are",
+  "you",
+];
+
+final events = [
+  "hi",
+  "there",
+  "how",
+  "are",
+  "you",
+  "today",
+  "because",
+  "im ",
+  "greatttttt",
+];
+
 class UserPage extends StatefulWidget {
   final Function toggleView;
   UserPage({this.toggleView});
@@ -24,62 +44,88 @@ class _UserPageState extends State<UserPage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-            title: !isSearching
-                ? Text('')
-                : TextField(
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        hintText: "Search here",
-                        icon: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                        hintStyle: TextStyle(color: Colors.white)),
-                  ),
+            // title: !isSearching
+            //     ? Text('')
+            //     : TextField(
+            //         style: TextStyle(color: Colors.white),
+            //         decoration: InputDecoration(
+            //             hintText: "Search here",
+            //             icon: Icon(
+            //               Icons.search,
+            //               color: Colors.white,
+            //             ),
+            //             hintStyle: TextStyle(color: Colors.white)),
+            //       ),
             elevation: 0,
-            leading: !isSearching
-                ? IconButton(
-                    icon: const Icon(Icons.person),
-                    onPressed: () {},
-                    iconSize: 35,
-                  )
-                : null,
-            actions: !isSearching
-                ? <Widget>[
-                    // Search bar
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () {
-                        setState(() {
-                          this.isSearching = !this.isSearching;
-                        });
-                      },
-                      iconSize: 35,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.notifications),
-                      onPressed: () {},
-                      iconSize: 35,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.logout),
-                      onPressed: () async {
-                        await _auth.signOut();
-                      },
-                    )
-                  ]
-                : <Widget>[
-                    // Search bar
-                    IconButton(
-                      icon: const Icon(Icons.cancel),
-                      onPressed: () {
-                        setState(() {
-                          this.isSearching = !this.isSearching;
-                        });
-                      },
-                      iconSize: 35,
-                    ),
-                  ],
+            // leading: !isSearching
+            //     ? IconButton(
+            //         icon: const Icon(Icons.person),
+            //         onPressed: () {},
+            //         iconSize: 35,
+            //       )
+            //     : null,
+            leading: IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+              iconSize: 35,
+            ),
+            // actions: !isSearching
+            //     ? <Widget>[
+            //         // Search bar
+            //         IconButton(
+            //           icon: const Icon(Icons.search),
+            //           onPressed: () {
+            //             setState(() {
+            //               this.isSearching = !this.isSearching;
+            //             });
+            //           },
+            //           iconSize: 35,
+            //         ),
+            //         IconButton(
+            //           icon: const Icon(Icons.notifications),
+            //           onPressed: () {},
+            //           iconSize: 35,
+            //         ),
+            //         IconButton(
+            //           icon: const Icon(Icons.logout),
+            //           onPressed: () async {
+            //             await _auth.signOut();
+            //           },
+            //         )
+            //       ]
+            //     : <Widget>[
+            //         // Search bar
+            //         IconButton(
+            //           icon: const Icon(Icons.cancel),
+            //           onPressed: () {
+            //             setState(() {
+            //               this.isSearching = !this.isSearching;
+            //             });
+            //           },
+            //           iconSize: 35,
+            //         ),
+            //       ],
+            actions: <Widget>[
+              // Search bar
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  showSearch(context: context, delegate: DataSearch());
+                },
+                iconSize: 35,
+              ),
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () {},
+                iconSize: 35,
+              ),
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+              )
+            ],
             backgroundColor: Color(0xff493657),
             bottom: TabBar(
               tabs: [
@@ -96,340 +142,6 @@ class _UserPageState extends State<UserPage> {
           ],
         ),
       ));
-
-  //var size = MediaQuery.of(context).size;
-
-  //   return StreamBuilder(
-  //       stream: currEvents.snapshots(),
-  //       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-  //         if (!snapshot.hasData) {
-  //           return Text("no value");
-  //         } else {
-  //           for (var event in snapshot.data.documents) {
-  //             eventsList.add(event);
-  //             eventIDs.add(event.documentID);
-  //           }
-  //           return Scaffold(
-  //               appBar: AppBar(
-  //                   elevation: 0,
-  //                   leading: IconButton(
-  //                     icon: const Icon(Icons.person),
-  //                     onPressed: () {},
-  //                     iconSize: 35,
-  //                   ),
-  //                   actions: <Widget>[
-  //                     // Search bar
-  //                     Expanded(
-  //                       child: IconButton(
-  //                         icon: const Icon(Icons.search),
-  //                         onPressed: () {},
-  //                         iconSize: 0,
-  //                       ),
-  //                     ),
-  //                     IconButton(
-  //                       icon: const Icon(Icons.notifications),
-  //                       onPressed: () {},
-  //                       iconSize: 35,
-  //                     ),
-  //                   ],
-  //                   backgroundColor: Color(0xff493657),
-  //                   bottom: PreferredSize(
-  //                       preferredSize: Size.fromHeight(35),
-  //                       child: Row(
-  //                         children: [
-  //                           TextButton(
-  //                             style: TextButton.styleFrom(
-  //                               primary: Colors.white54,
-  //                               textStyle: TextStyle(
-  //                                   fontSize: 17,
-  //                                   color: Colors.white,
-  //                                   fontFamily: "Lato Regular"),
-  //                             ),
-  //                             onPressed: () {
-  //                               print("Line 200");
-  //                               // widget.toggleViewForgotPassword();
-  //                             },
-  //                             child: Text('Your page'),
-  //                           ),
-  //                           TextButton(
-  //                             style: TextButton.styleFrom(
-  //                               primary: Colors.white54,
-  //                               textStyle: TextStyle(
-  //                                   fontSize: 17,
-  //                                   color: Colors.white,
-  //                                   fontFamily: "Lato Regular"),
-  //                             ),
-  //                             onPressed: () {
-  //                               print("Line 200");
-  //                               //widget.toggleViewCategoriesPage();
-  //                             },
-  //                             child: Text('Categories'),
-  //                           ),
-  //                           TextButton(
-  //                             style: TextButton.styleFrom(
-  //                               primary: Colors.white54,
-  //                               textStyle: TextStyle(
-  //                                   fontSize: 17,
-  //                                   color: Colors.white,
-  //                                   fontFamily: "Lato Regular"),
-  //                             ),
-  //                             onPressed: () {
-  //                               print("Line 200");
-  //                               // widget.toggleViewForgotPassword();
-  //                             },
-  //                             child: Text('Organizers'),
-  //                           ),
-  //                         ],
-  //                       ))
-  //                   ),
-
-  //               // Add members in here
-  //               resizeToAvoidBottomInset: false,
-  //               // Stacks the members so that everything else appears above the background
-  //               body: Stack(children: <Widget>[
-  //                 // Stretches the widget to the entire screen is what Expanded does
-
-  //                 Container(
-  //                   child: Container(
-  //                     decoration: BoxDecoration(
-  //                         image: DecorationImage(
-  //                             // Background Image
-  //                             image: AssetImage("assets/images/background.png"),
-  //                             fit: BoxFit.fill)),
-  //                   ),
-  //                 ),
-
-  //                 // Sub Title 1
-  //                 Column(
-  //                   mainAxisAlignment: MainAxisAlignment.start,
-  //                   crossAxisAlignment: CrossAxisAlignment.start,
-  //                   children: [
-  //                     Container(
-  //                         child: Padding(
-  //                       padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-  //                       child: Text(
-  //                         'Suggested for you',
-  //                         style: TextStyle(
-  //                             fontFamily: "Roboto Bold",
-  //                             color: Colors.white,
-  //                             fontSize: 20),
-  //                       ),
-  //                     )),
-
-  //                     // Slider
-  //                     Padding(
-  //                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-  //                       child: CarouselSlider(
-  //                         options: CarouselOptions(
-  //                             height: 230.0,
-  //                             autoPlay: true,
-  //                             autoPlayInterval: Duration(seconds: 3)),
-  //                         items: [0, 1, 2, 3, 4].map((i) {
-  //                           return Builder(
-  //                             builder: (BuildContext context) {
-  //                               return Container(
-  //                                 width: MediaQuery.of(context).size.width,
-  //                                 margin:
-  //                                     EdgeInsets.symmetric(horizontal: 10.0),
-  //                                 decoration: BoxDecoration(
-  //                                     borderRadius: BorderRadius.only(
-  //                                         topRight: Radius.circular(10.0),
-  //                                         bottomRight: Radius.circular(10.0),
-  //                                         topLeft: Radius.circular(10.0),
-  //                                         bottomLeft: Radius.circular(10.0)),
-  //                                     // Slider colour
-  //                                     color: Color(0xff493657)),
-  //                                 child: Column(
-  //                                     mainAxisAlignment:
-  //                                         MainAxisAlignment.start,
-  //                                     crossAxisAlignment:
-  //                                         CrossAxisAlignment.start,
-  //                                     children: <Widget>[
-  //                                       Container(
-  //                                         width:
-  //                                             MediaQuery.of(context).size.width,
-  //                                         child: Image(
-  //                                           // Temporary image for the slider
-  //                                           // Be careful since the image needs to be an exact size right now
-  //                                           image: AssetImage(
-  //                                               'assets/images/pancake.png'),
-  //                                           fit: BoxFit.cover,
-  //                                         ),
-  //                                       ),
-  //                                       Padding(
-  //                                         padding: const EdgeInsets.all(8.0),
-  //                                         child: Text(
-  //                                           eventsList[i]['name'],
-  //                                           style: TextStyle(
-  //                                               fontFamily: "Lato Bold",
-  //                                               color: Colors.white,
-  //                                               fontSize: 16),
-  //                                         ),
-  //                                       ),
-  //                                       Padding(
-  //                                         padding: const EdgeInsets.fromLTRB(
-  //                                             8, 0, 0, 4),
-  //                                         child: Row(
-  //                                           children: [
-  //                                             Icon(
-  //                                               Icons.calendar_today,
-  //                                               color: Colors.white,
-  //                                             ),
-  //                                             Padding(
-  //                                               padding:
-  //                                                   const EdgeInsets.fromLTRB(
-  //                                                       4, 0, 0, 0),
-  //                                               child: Text(
-  //                                                 eventsList[i]['date'],
-  //                                                 style: TextStyle(
-  //                                                     fontFamily: "Lato Bold",
-  //                                                     color: Colors.white,
-  //                                                     fontSize: 14),
-  //                                               ),
-  //                                             ),
-  //                                           ],
-  //                                         ),
-  //                                       ),
-  //                                       Padding(
-  //                                         padding: const EdgeInsets.fromLTRB(
-  //                                             8, 0, 0, 4),
-  //                                         child: Row(
-  //                                           children: [
-  //                                             Icon(
-  //                                               Icons.access_time_rounded,
-  //                                               color: Colors.white,
-  //                                             ),
-  //                                             Padding(
-  //                                               padding:
-  //                                                   const EdgeInsets.fromLTRB(
-  //                                                       4, 0, 0, 0),
-  //                                               child: Text(
-  //                                                 'Time $i',
-  //                                                 style: TextStyle(
-  //                                                     fontFamily: "Lato Bold",
-  //                                                     color: Colors.white,
-  //                                                     fontSize: 14),
-  //                                               ),
-  //                                             ),
-  //                                           ],
-  //                                         ),
-  //                                       )
-  //                                     ]),
-  //                               );
-  //                             },
-  //                           );
-  //                         }).toList(),
-  //                       ),
-  //                     ),
-
-  //                     // Sub Title 2
-  //                     Container(
-  //                         child: Padding(
-  //                       padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-  //                       child: Text(
-  //                         'Featured',
-  //                         style: TextStyle(
-  //                             fontFamily: "Roboto Bold",
-  //                             color: Colors.white,
-  //                             fontSize: 20),
-  //                       ),
-  //                     )),
-
-  //                     // Featured
-  //                     Padding(
-  //                       padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-  //                       child: Container(
-  //                         width: (MediaQuery.of(context).size.width) * 0.7,
-  //                         margin: EdgeInsets.symmetric(horizontal: 10.0),
-  //                         decoration: BoxDecoration(
-  //                             borderRadius: BorderRadius.only(
-  //                                 topRight: Radius.circular(10.0),
-  //                                 bottomRight: Radius.circular(10.0),
-  //                                 topLeft: Radius.circular(10.0),
-  //                                 bottomLeft: Radius.circular(10.0)),
-  //                             // Slider colour
-  //                             color: Color(0xff493657)),
-  //                         child: Column(
-  //                             mainAxisAlignment: MainAxisAlignment.start,
-  //                             crossAxisAlignment: CrossAxisAlignment.start,
-  //                             children: <Widget>[
-  //                               // Gesture Detection goes here
-
-  //                               Container(
-  //                                 width: MediaQuery.of(context).size.width,
-  //                                 child: Image(
-  //                                   // Temporary image for the slider
-  //                                   // Be careful since the image needs to be an exact size right now
-  //                                   image:
-  //                                       AssetImage('assets/images/pancake.png'),
-  //                                   fit: BoxFit.cover,
-  //                                 ),
-  //                               ),
-  //                               Padding(
-  //                                 padding: const EdgeInsets.all(8.0),
-  //                                 child: Text(
-  //                                   'Event Title x',
-  //                                   style: TextStyle(
-  //                                       fontFamily: "Lato Bold",
-  //                                       color: Colors.white,
-  //                                       fontSize: 16),
-  //                                 ),
-  //                               ),
-  //                               Padding(
-  //                                 padding:
-  //                                     const EdgeInsets.fromLTRB(8, 0, 0, 4),
-  //                                 child: Row(
-  //                                   children: [
-  //                                     Icon(
-  //                                       Icons.calendar_today,
-  //                                       color: Colors.white,
-  //                                     ),
-  //                                     Padding(
-  //                                       padding: const EdgeInsets.fromLTRB(
-  //                                           4, 0, 0, 0),
-  //                                       child: Text(
-  //                                         'Date x',
-  //                                         style: TextStyle(
-  //                                             fontFamily: "Lato Bold",
-  //                                             color: Colors.white,
-  //                                             fontSize: 14),
-  //                                       ),
-  //                                     ),
-  //                                   ],
-  //                                 ),
-  //                               ),
-  //                               Padding(
-  //                                 padding:
-  //                                     const EdgeInsets.fromLTRB(8, 0, 0, 4),
-  //                                 child: Row(
-  //                                   children: [
-  //                                     Icon(
-  //                                       Icons.access_time_rounded,
-  //                                       color: Colors.white,
-  //                                     ),
-  //                                     Padding(
-  //                                       padding: const EdgeInsets.fromLTRB(
-  //                                           4, 0, 0, 0),
-  //                                       child: Text(
-  //                                         'Time x',
-  //                                         style: TextStyle(
-  //                                             fontFamily: "Lato Bold",
-  //                                             color: Colors.white,
-  //                                             fontSize: 14),
-  //                                       ),
-  //                                     ),
-  //                                   ],
-  //                                 ),
-  //                               )
-  //                             ]),
-  //                       ),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ]));
-  //         }
-  //       });
-  // );
 }
 
 class DataSearch extends SearchDelegate<String> {
@@ -437,7 +149,13 @@ class DataSearch extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     // TODO: implement buildActions
     // actions for app bar
-    return [IconButton(onPressed: () {}, icon: Icon(Icons.clear))];
+    return [
+      IconButton(
+          onPressed: () {
+            query = "";
+          },
+          icon: Icon(Icons.clear))
+    ];
   }
 
   @override
@@ -447,20 +165,41 @@ class DataSearch extends SearchDelegate<String> {
     return IconButton(
         icon: AnimatedIcon(
             icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
-        onPressed: () {});
+        onPressed: () {
+          close(context, null);
+        });
   }
 
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
     // show some result based on the selection
-    throw UnimplementedError();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     // show when someone searches for something
-    throw UnimplementedError();
+
+    final suggestionList = query.isEmpty
+        ? recentEvents
+        : events.where((p) => p.startsWith(query)).toList();
+
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+          onTap: () {},
+          leading: Icon(Icons.event),
+          title: RichText(
+              text: TextSpan(
+                  text: suggestionList[index].substring(0, query.length),
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                  children: [
+                TextSpan(
+                    text: suggestionList[index].substring(query.length),
+                    style: TextStyle(color: Colors.grey))
+              ]))),
+      itemCount: suggestionList.length,
+    );
   }
 }
