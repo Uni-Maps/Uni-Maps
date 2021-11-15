@@ -44,67 +44,12 @@ class _UserPageState extends State<UserPage> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-            // title: !isSearching
-            //     ? Text('')
-            //     : TextField(
-            //         style: TextStyle(color: Colors.white),
-            //         decoration: InputDecoration(
-            //             hintText: "Search here",
-            //             icon: Icon(
-            //               Icons.search,
-            //               color: Colors.white,
-            //             ),
-            //             hintStyle: TextStyle(color: Colors.white)),
-            //       ),
             elevation: 0,
-            // leading: !isSearching
-            //     ? IconButton(
-            //         icon: const Icon(Icons.person),
-            //         onPressed: () {},
-            //         iconSize: 35,
-            //       )
-            //     : null,
             leading: IconButton(
               icon: const Icon(Icons.person),
               onPressed: () {},
               iconSize: 35,
             ),
-            // actions: !isSearching
-            //     ? <Widget>[
-            //         // Search bar
-            //         IconButton(
-            //           icon: const Icon(Icons.search),
-            //           onPressed: () {
-            //             setState(() {
-            //               this.isSearching = !this.isSearching;
-            //             });
-            //           },
-            //           iconSize: 35,
-            //         ),
-            //         IconButton(
-            //           icon: const Icon(Icons.notifications),
-            //           onPressed: () {},
-            //           iconSize: 35,
-            //         ),
-            //         IconButton(
-            //           icon: const Icon(Icons.logout),
-            //           onPressed: () async {
-            //             await _auth.signOut();
-            //           },
-            //         )
-            //       ]
-            //     : <Widget>[
-            //         // Search bar
-            //         IconButton(
-            //           icon: const Icon(Icons.cancel),
-            //           onPressed: () {
-            //             setState(() {
-            //               this.isSearching = !this.isSearching;
-            //             });
-            //           },
-            //           iconSize: 35,
-            //         ),
-            //       ],
             actions: <Widget>[
               // Search bar
               IconButton(
@@ -187,7 +132,9 @@ class DataSearch extends SearchDelegate<String> {
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
-          onTap: () {},
+          onTap: () {
+            print(suggestionList[index]);
+          },
           leading: Icon(Icons.event),
           title: RichText(
               text: TextSpan(
