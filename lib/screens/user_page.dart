@@ -17,43 +17,69 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   final AuthService _auth = AuthService();
 
-  // List eventsList = [];
-  // List eventIDs = [];
-
-  // CollectionReference currEvents = Firestore.instance.collection('events');
+  bool isSearching = false;
 
   @override
   Widget build(BuildContext context) => DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+            title: !isSearching
+                ? Text('')
+                : TextField(
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        hintText: "Search here",
+                        icon: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                        hintStyle: TextStyle(color: Colors.white)),
+                  ),
             elevation: 0,
-            leading: IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
-              iconSize: 35,
-            ),
-            actions: <Widget>[
-              // Search bar
-              Expanded(
-                child: IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {},
-                  iconSize: 35,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {},
-                iconSize: 35,
-              ),
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () async {
-                  await _auth.signOut();
-                },
-              )
-            ],
+            leading: !isSearching
+                ? IconButton(
+                    icon: const Icon(Icons.person),
+                    onPressed: () {},
+                    iconSize: 35,
+                  )
+                : null,
+            actions: !isSearching
+                ? <Widget>[
+                    // Search bar
+                    IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: () {
+                        setState(() {
+                          this.isSearching = !this.isSearching;
+                        });
+                      },
+                      iconSize: 35,
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.notifications),
+                      onPressed: () {},
+                      iconSize: 35,
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.logout),
+                      onPressed: () async {
+                        await _auth.signOut();
+                      },
+                    )
+                  ]
+                : <Widget>[
+                    // Search bar
+                    IconButton(
+                      icon: const Icon(Icons.cancel),
+                      onPressed: () {
+                        setState(() {
+                          this.isSearching = !this.isSearching;
+                        });
+                      },
+                      iconSize: 35,
+                    ),
+                  ],
             backgroundColor: Color(0xff493657),
             bottom: TabBar(
               tabs: [
@@ -404,4 +430,37 @@ class _UserPageState extends State<UserPage> {
   //         }
   //       });
   // );
+}
+
+class DataSearch extends SearchDelegate<String> {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    // actions for app bar
+    return [IconButton(onPressed: () {}, icon: Icon(Icons.clear))];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    // leading icon on the left of the app bar
+    return IconButton(
+        icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+        onPressed: () {});
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    // show some result based on the selection
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    // show when someone searches for something
+    throw UnimplementedError();
+  }
 }
