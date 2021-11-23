@@ -7,6 +7,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
+import 'package:winhacks/screens/models.dart';
 import 'package:winhacks/services/database.dart';
 
 // Location Drop down Variables
@@ -80,6 +81,7 @@ class _Create_EventsState extends State<Create_Events> {
   String room;
   String description;
   String location;
+  String title = 'Create Event';
 
   @override
   void initState() {
@@ -89,6 +91,7 @@ class _Create_EventsState extends State<Create_Events> {
 
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
+    double screenWidth = MediaQuery.of(context).size.width * 1;
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -109,42 +112,8 @@ class _Create_EventsState extends State<Create_Events> {
 
           Container(
               child: Column(children: <Widget>[
-            // Top App Bar Container
-            Container(
-                // Add padding
-                decoration: new BoxDecoration(
-                  color: Color(0xff493657),
-                ),
-                child: Row(children: <Widget>[
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        // Change this to children, add another container
-                        padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
-                        child: Container(
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back),
-                            onPressed: () {
-                              print("line 58");
-                            },
-                            iconSize: 32,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )),
-                  Align(
-                      alignment: Alignment.center,
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: "Create Events",
-                              style: TextStyle(
-                                  fontFamily: "Lato Bold",
-                                  color: Colors.white,
-                                  fontSize: 25))
-                        ]),
-                      )),
-                ])),
+            // Top App Bar Model
+            topAppBar(title, screenWidth),
 
             // Container that has all the input boxes
             Container(
