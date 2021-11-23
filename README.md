@@ -15,7 +15,7 @@ Uni-Maps was ititially made for Winhacks 2021 but has grown on to our business. 
 Option 1:
 
 ```bash
-$ git clone https://github.com/Unii-Maps/Uni-Maps.git
+$ git clone https://github.com/Uni-Maps/Uni-Maps.git
 ```
 
 Option 2:
