@@ -74,6 +74,7 @@ flutter:
     - assets/images/email.png
     - assets/images/background.png
     - assets/images/pancake.png
+    - assets/images/health_and_wellness.png
   
     
   fonts:
