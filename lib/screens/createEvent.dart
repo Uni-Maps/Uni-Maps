@@ -7,7 +7,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
-import 'package:winhacks/screens/models.dart';
+import 'package:winhacks/models/models.dart';
 import 'package:winhacks/services/database.dart';
 
 // Location Drop down Variables
@@ -63,16 +63,16 @@ List categoryItem = [
 
 TimeOfDay selectedTime = TimeOfDay.now();
 
-class Create_Events extends StatefulWidget {
+class CreateEvents extends StatefulWidget {
   final Function toggleViewLogin;
 
-  Create_Events({this.toggleViewLogin});
+  CreateEvents({this.toggleViewLogin});
 
   @override
-  _Create_EventsState createState() => _Create_EventsState();
+  _CreateEventsState createState() => _CreateEventsState();
 }
 
-class _Create_EventsState extends State<Create_Events> {
+class _CreateEventsState extends State<CreateEvents> {
   TextEditingController timeinput = TextEditingController();
 
   String name;

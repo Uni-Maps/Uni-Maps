@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:winhacks/screens/addEvent.dart';
-import 'package:winhacks/screens/create_events.dart';
+import 'package:winhacks/screens/createEvent.dart';
 
 class YourPage extends StatefulWidget {
   final Function toggleView;
@@ -70,7 +70,7 @@ class _YourPage_State extends State<YourPage> {
                           icon: Icon(Icons.add),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Create_Events()));
+                                builder: (context) => CreateEvents()));
                           }),
 
                       // Slider

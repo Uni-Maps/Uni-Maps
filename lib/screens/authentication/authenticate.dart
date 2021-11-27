@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../create_account.dart';
-import '../forgot_password.dart';
-import '../log_in.dart';
+import 'createAccount.dart';
+import 'forgotPassword.dart';
+import 'logIn.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -29,13 +29,13 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if (form == FormMode.LOGIN) {
-      return SignIn_Account(
+      return SignIn(
           toggleViewSignup: toggleViewSignup,
           toggleViewForgotPassword: toggleViewForgotPassword);
     } else if (form == FormMode.SIGNUP) {
-      return Create_Account(toggleViewLogin: toggleViewLogin);
+      return CreateAccount(toggleViewLogin: toggleViewLogin);
     } else {
-      return Forgot_Password(toggleViewLogin: toggleViewLogin);
+      return ForgotPassword(toggleViewLogin: toggleViewLogin);
     }
   }
 }

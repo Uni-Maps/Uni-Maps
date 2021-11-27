@@ -1,39 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:winhacks/services/auth.dart';
-import 'package:winhacks/shared/constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:winhacks/screens/styles.dart';
-
-class Categories_Page extends StatefulWidget {
-  final Function toggleView;
-  Categories_Page({this.toggleView});
-
-  @override
-  _CategoriesPage_State createState() => _CategoriesPage_State();
-}
-
-class _CategoriesPage_State extends State<Categories_Page> {
-  final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
-
-  //text field state
-  String username = '';
-  String email = '';
-  String password = '';
-  String error = '';
-
-  bool isHiddenPassword = true;
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
-    return Scaffold();
-  }
-}
 
 // Categories model
 categories() {

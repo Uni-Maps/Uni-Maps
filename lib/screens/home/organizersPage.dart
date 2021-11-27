@@ -1,17 +1,16 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:winhacks/screens/models.dart';
+import 'package:winhacks/models/models.dart';
 
-class Organizers_Page extends StatefulWidget {
+class OrganizersPage extends StatefulWidget {
   final Function toggleView;
-  Organizers_Page({this.toggleView});
+  OrganizersPage({this.toggleView});
 
   @override
-  _OrganizersPage_State createState() => _OrganizersPage_State();
+  _OrganizersPageState createState() => _OrganizersPageState();
 }
 
-class _OrganizersPage_State extends State<Organizers_Page> {
+class _OrganizersPageState extends State<OrganizersPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

@@ -1,18 +1,16 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:winhacks/screens/models.dart';
+import 'package:winhacks/models/models.dart';
 
-class Categories_Page extends StatefulWidget {
+class CategoriesPage extends StatefulWidget {
   final Function toggleView;
-  Categories_Page({this.toggleView});
+  CategoriesPage({this.toggleView});
 
   @override
-  _CategoriesPage_State createState() => _CategoriesPage_State();
+  _CategoriesPageState createState() => _CategoriesPageState();
 }
 
-class _CategoriesPage_State extends State<Categories_Page> {
+class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

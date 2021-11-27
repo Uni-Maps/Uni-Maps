@@ -1,24 +1,26 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
-import 'package:winhacks/shared/constants.dart';
 
-class Forgot_Password extends StatefulWidget {
-  final Function toggleViewLogin;
-  Forgot_Password({this.toggleViewLogin});
+class SignIn extends StatefulWidget {
+  final Function toggleViewSignup;
+  final Function toggleViewForgotPassword;
+
+  SignIn({this.toggleViewSignup, this.toggleViewForgotPassword});
 
   @override
-  _ForgotPassword_State createState() => _ForgotPassword_State();
+  _SignInState createState() => _SignInState();
 }
 
-class _ForgotPassword_State extends State<Forgot_Password> {
+class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   //text field state
+  String username = '';
   String email = '';
+  String password = '';
   String error = '';
 
   bool isHiddenPassword = true;
@@ -82,97 +84,19 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                   // Add Text Spans to edit each section of the entire sentence
                                   text: TextSpan(children: [
                                     TextSpan(
-                                        text: "Forgot your password?",
+                                        text: "Welcome Back!",
                                         style: TextStyle(
                                             fontFamily: "Lato Bold",
                                             color: Colors.white,
                                             fontSize: 30))
                                   ]),
                                 ),
-
-                                // Adding in the image for the email
-                                Expanded(
-                                    // Flex is used to expand compared to the other flexes (3x bigger than the other one)
-                                    flex: 7,
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                      child: Image.asset(
-                                        "assets/images/people/email.png",
-                                      ),
-                                    )),
-
                                 // Heading
-                                RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                        text:
-                                            "Enter the email address associated",
-                                        style: TextStyle(
-                                            fontFamily: "Lato Bold",
-                                            color: Colors.white,
-                                            fontSize: 20)),
-                                  ]),
-                                ),
-                                RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                        text: "with your account.",
-                                        style: TextStyle(
-                                            fontFamily: "Lato Bold",
-                                            color: Colors.white,
-                                            fontSize: 20))
-                                  ]),
-                                ),
-                                Padding(
-                                    padding:
-                                        EdgeInsets.fromLTRB(40, 20, 40, 20),
-                                    child: TextFormField(
-                                        style: TextStyle(color: Colors.white),
-                                        decoration: InputDecoration(
-                                            enabledBorder:
-                                                new OutlineInputBorder(
-                                              borderSide: new BorderSide(
-                                                  color: Colors.white),
-                                              borderRadius:
-                                                  BorderRadius.circular(14),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.white),
-                                              borderRadius:
-                                                  BorderRadius.circular(14),
-                                            ),
-                                            labelText: 'Email',
-                                            labelStyle:
-                                                TextStyle(color: Colors.white)),
-                                        validator: (val) => val.isEmpty
-                                            ? 'Enter an email'
-                                            : null,
-                                        onChanged: (val) {
-                                          setState(() => email = val);
-                                        })),
-                                // We will email you the link text
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: RichText(
-                                    // textAlign: TextAlign.center,
-                                    text: TextSpan(children: [
-                                      TextSpan(
-                                          text: "We will email you the link to",
-                                          style: TextStyle(
-                                              fontFamily: "Lato Regular",
-                                              color: Colors.white54,
-                                              fontSize: 16))
-                                    ]),
-                                  ),
-                                ),
                                 RichText(
                                   // textAlign: TextAlign.center,
                                   text: TextSpan(children: [
                                     TextSpan(
-                                        text: "reset your password.",
+                                        text: "We’re happy to see you again!",
                                         style: TextStyle(
                                             fontFamily: "Lato Regular",
                                             color: Colors.white54,
@@ -181,22 +105,121 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                 ),
                                 // Add in buttons/labels/texts between the title and the image at the bottom
                                 // Username
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                                    child: TextFormField(
+                                      style: TextStyle(color: Colors.white),
+                                      decoration: InputDecoration(
+                                          enabledBorder: new OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          labelText: 'Username',
+                                          labelStyle:
+                                              TextStyle(color: Colors.white)),
+                                      validator: (val) =>
+                                          val.isEmpty ? 'Enter an email' : null,
+                                      onChanged: (val) {
+                                        setState(() => email = val.trim());
+                                      },
+                                    )),
+
+                                // Password
+
+                                // FIGURE OUT WHY THE BORDERS OF THE TEXTFIELD ARE BLACK AND NOT WHITE
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                                    child: TextFormField(
+                                      obscureText: isHiddenPassword,
+                                      style: TextStyle(color: Colors.white),
+                                      decoration: InputDecoration(
+                                          enabledBorder: new OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          suffixIcon: InkWell(
+                                            onTap: _togglePasswordView,
+                                            child: Icon(
+                                              Icons.visibility,
+                                              color: this.isHiddenPassword
+                                                  ? Colors.grey
+                                                  : Colors.blue,
+                                            ),
+                                          ),
+                                          labelText: 'Password',
+                                          labelStyle:
+                                              TextStyle(color: Colors.white)),
+                                      validator: (val) => val.length < 6
+                                          ? 'Enter a password 6+ chars long'
+                                          : null,
+                                      onChanged: (val) {
+                                        setState(() => password = val);
+                                      },
+                                    )),
+
+                                // Forgot Password
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                      child: Row(children: <Widget>[
+                                    Padding(
+                                      // In case any padding is ever needed
+                                      padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
+                                    ), //Text button
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        primary: Colors.white54,
+                                        textStyle: TextStyle(
+                                            fontSize: 17,
+                                            color: Colors.white,
+                                            fontFamily: "Lato Regular"),
+                                      ),
+                                      onPressed: () {
+                                        print("Line 200");
+                                        widget.toggleViewForgotPassword();
+                                      },
+                                      child: Text('Forgot your password?'),
+                                    ),
+                                  ])),
+                                ),
 
                                 //Login Button
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 30, 0, 60),
+                                Container(
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
                                       ElevatedButton(
-                                        onPressed: () {
-                                          print("Line 180");
-                                          _auth.sendPasswordResetEmail(
-                                              email: email);
+                                        onPressed: () async {
+                                          if (_formKey.currentState
+                                              .validate()) {
+                                            dynamic result = await _auth
+                                                .signInWithEmailandPassword(
+                                                    email, password);
+                                            if (result == null) {
+                                              setState(() => error =
+                                                  'Could not sign in with those credentials! Please enter a valid email.');
+                                            }
+                                          }
                                         },
                                         child: Text(
-                                          "            Send Instructions            ",
+                                          "               Login               ",
                                           style: TextStyle(fontSize: 14),
                                         ),
                                         style: ButtonStyle(
@@ -217,6 +240,18 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                     ],
                                   ),
                                 ),
+
+                                // Adding in the image for the person
+                                Expanded(
+                                    // Flex is used to expand compared to the other flexes (3x bigger than the other one)
+                                    flex: 10,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(0, 100, 10, 0),
+                                      child: Image.asset(
+                                          "assets/images/people/login_person.png",
+                                          fit: BoxFit.fill),
+                                    )),
 
                                 // Log In button and text
                                 Expanded(
@@ -259,7 +294,7 @@ class _ForgotPassword_State extends State<Forgot_Password> {
                                               ),
                                               onPressed: () {
                                                 print("Line 271");
-                                                widget.toggleViewLogin();
+                                                widget.toggleViewSignup();
                                               },
                                               child: Text('Register'),
                                             ),

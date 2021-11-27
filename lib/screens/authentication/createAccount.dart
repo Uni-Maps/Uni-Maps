@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/services/auth.dart';
 
-class SignIn_Account extends StatefulWidget {
-  final Function toggleViewSignup;
-  final Function toggleViewForgotPassword;
+class CreateAccount extends StatefulWidget {
+  final Function toggleViewLogin;
 
-  SignIn_Account({this.toggleViewSignup, this.toggleViewForgotPassword});
+  CreateAccount({this.toggleViewLogin});
 
   @override
-  _SignIn_AccountState createState() => _SignIn_AccountState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
-class _SignIn_AccountState extends State<SignIn_Account> {
+class _CreateAccountState extends State<CreateAccount> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -84,7 +83,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                   // Add Text Spans to edit each section of the entire sentence
                                   text: TextSpan(children: [
                                     TextSpan(
-                                        text: "Welcome Back!",
+                                        text: "Create Account",
                                         style: TextStyle(
                                             fontFamily: "Lato Bold",
                                             color: Colors.white,
@@ -96,7 +95,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                   // textAlign: TextAlign.center,
                                   text: TextSpan(children: [
                                     TextSpan(
-                                        text: "We’re happy to see you again!",
+                                        text: "Join the community",
                                         style: TextStyle(
                                             fontFamily: "Lato Regular",
                                             color: Colors.white54,
@@ -125,18 +124,40 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                           labelText: 'Username',
                                           labelStyle:
                                               TextStyle(color: Colors.white)),
+                                    )),
+                                // Email
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                                    child: TextFormField(
+                                      style: TextStyle(color: Colors.white),
+                                      decoration: InputDecoration(
+                                          enabledBorder: new OutlineInputBorder(
+                                            borderSide: new BorderSide(
+                                                color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          labelText: 'Email',
+                                          labelStyle:
+                                              TextStyle(color: Colors.white)),
                                       validator: (val) =>
                                           val.isEmpty ? 'Enter an email' : null,
                                       onChanged: (val) {
                                         setState(() => email = val);
                                       },
                                     )),
-
                                 // Password
 
                                 // FIGURE OUT WHY THE BORDERS OF THE TEXTFIELD ARE BLACK AND NOT WHITE
                                 Padding(
-                                    padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                                    padding:
+                                        EdgeInsets.fromLTRB(40, 20, 40, 20),
                                     child: TextFormField(
                                       obscureText: isHiddenPassword,
                                       style: TextStyle(color: Colors.white),
@@ -172,34 +193,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                         setState(() => password = val);
                                       },
                                     )),
-
-                                // Forgot Password
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                      child: Row(children: <Widget>[
-                                    Padding(
-                                      // In case any padding is ever needed
-                                      padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
-                                    ), //Text button
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        primary: Colors.white54,
-                                        textStyle: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.white,
-                                            fontFamily: "Lato Regular"),
-                                      ),
-                                      onPressed: () {
-                                        print("Line 200");
-                                        widget.toggleViewForgotPassword();
-                                      },
-                                      child: Text('Forgot your password?'),
-                                    ),
-                                  ])),
-                                ),
-
-                                //Login Button
+                                // Button
                                 Container(
                                   child: Column(
                                     crossAxisAlignment:
@@ -210,16 +204,16 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                           if (_formKey.currentState
                                               .validate()) {
                                             dynamic result = await _auth
-                                                .signInWithEmailandPassword(
+                                                .registerWithEmailandPassword(
                                                     email, password);
                                             if (result == null) {
                                               setState(() => error =
-                                                  'Could not sign in with those credentials! Please enter a valid email.');
+                                                  'Please enter a valid email');
                                             }
                                           }
                                         },
                                         child: Text(
-                                          "               Login               ",
+                                          "               Sign Up               ",
                                           style: TextStyle(fontSize: 14),
                                         ),
                                         style: ButtonStyle(
@@ -241,21 +235,43 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                   ),
                                 ),
 
+                                // Text for the terms and services
+                                Container(
+                                    child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(25, 20, 25, 0),
+                                        child: RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(children: [
+                                            TextSpan(
+                                                text:
+                                                    "By creating an account, you agree with our Terms and Service & Privacy Policy",
+                                                style: TextStyle(
+                                                    fontFamily: "Lato Regular",
+                                                    color: Colors.white54,
+                                                    fontSize: 14))
+                                          ]),
+                                        ),
+                                      )
+                                    ])),
                                 // Adding in the image for the person
                                 Expanded(
                                     // Flex is used to expand compared to the other flexes (3x bigger than the other one)
                                     flex: 10,
                                     child: Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(0, 100, 10, 0),
+                                      padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
                                       child: Image.asset(
-                                          "assets/images/people/login_person.png",
+                                          "assets/images/people/create_account_person.png",
                                           fit: BoxFit.fill),
                                     )),
 
                                 // Log In button and text
                                 Expanded(
-                                  flex: 2,
+                                  flex: 3,
                                   child: Container(
                                       decoration: BoxDecoration(
                                           color: Color(0xff493657)),
@@ -275,7 +291,7 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                                 text: TextSpan(children: [
                                                   TextSpan(
                                                       text:
-                                                          "Don’t have an account?",
+                                                          "Already have an account?",
                                                       style: TextStyle(
                                                           fontFamily:
                                                               "Lato Regular",
@@ -288,15 +304,15 @@ class _SignIn_AccountState extends State<SignIn_Account> {
                                               style: TextButton.styleFrom(
                                                 primary: Color(0xff2EDEA6),
                                                 textStyle: TextStyle(
-                                                    fontSize: 17.5,
+                                                    fontSize: 16,
                                                     color: Colors.white,
                                                     fontFamily: "Lato Bold"),
                                               ),
                                               onPressed: () {
                                                 print("Line 271");
-                                                widget.toggleViewSignup();
+                                                widget.toggleViewLogin();
                                               },
-                                              child: Text('Register'),
+                                              child: Text('Log In'),
                                             ),
                                           ])),
                                 )

@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:winhacks/screens/gmap.dart';
-import 'package:winhacks/screens/user_page.dart';
-import 'package:winhacks/screens/categories_page.dart';
-import 'package:winhacks/screens/organizers_page.dart';
-import 'package:winhacks/screens/saved_page.dart';
+import 'package:winhacks/screens/map/gmap.dart';
+import 'package:winhacks/screens/home/userPage.dart';
+import 'package:winhacks/screens/home/categoriesPage.dart';
+import 'package:winhacks/screens/saved/savedPage.dart';
 
-class Navigation_Bar extends StatefulWidget {
+class NavigationBar extends StatefulWidget {
   @override
-  _Navigation_BarState createState() => _Navigation_BarState();
+  _NavigationBarState createState() => _NavigationBarState();
 }
 
-class _Navigation_BarState extends State<Navigation_Bar> {
+class _NavigationBarState extends State<NavigationBar> {
   // Bottom navigation bar index
   int _selectedIndex = 0;
 
+  // Nav bar pages
   List<Widget> _widgetOptions = <Widget>[
-    // Different pages here
-    // User_Page(),
-    // GMap(),
-    // Calendar(),
-    // Saved()
-
     UserPage(),
     GMap(),
-    Categories_Page(),
-    //Text("Calendar"),
-    Saved_Page(),
+    CategoriesPage(),
+    SavedPage(),
   ];
 
   void _onItemTap(int index) {

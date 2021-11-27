@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
 import 'package:winhacks/services/database.dart';
 
+// Eventually move to db
 Map<String, List<double>> locations = {
   "Athletic Complex": [43.4752126803426, -80.52565140859437],
   "Alumni hall": [43.47298689536837, -80.52843465805189],

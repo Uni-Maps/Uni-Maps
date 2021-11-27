@@ -1,19 +1,15 @@
-import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:winhacks/screens/addEvent.dart';
-import 'package:winhacks/screens/create_events.dart';
-import 'package:winhacks/screens/models.dart';
+import 'package:winhacks/models/models.dart';
 
-class Saved_Page extends StatefulWidget {
+class SavedPage extends StatefulWidget {
   // final Function toggleView;
   // Saved_Page({this.toggleView});
 
   @override
-  _SavedPage_State createState() => _SavedPage_State();
+  _SavedPageState createState() => _SavedPageState();
 }
 
-class _SavedPage_State extends State<Saved_Page> {
+class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

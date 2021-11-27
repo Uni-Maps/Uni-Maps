@@ -1,10 +1,8 @@
-import 'package:winhacks/screens/authenticate/authenticate.dart';
-import 'package:winhacks/screens/home/home.dart';
+import 'package:winhacks/screens/authentication/authenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:winhacks/models/user.dart';
-import 'package:winhacks/screens/navigation_bar.dart';
-import 'package:winhacks/screens/user_page.dart';
+import 'package:winhacks/screens/navigationBar.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -15,7 +13,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Authenticate();
     } else {
-      return Navigation_Bar();
+      return NavigationBar();
     }
   }
 }

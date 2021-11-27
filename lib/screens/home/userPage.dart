@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:winhacks/screens/categories_page.dart';
-import 'package:winhacks/screens/organizers_page.dart';
-import 'package:winhacks/screens/YourPage.dart';
+import 'package:winhacks/screens/home/categoriesPage.dart';
+import 'package:winhacks/screens/home/organizersPage.dart';
+import 'package:winhacks/screens/home/YourPage.dart';
 import 'package:winhacks/services/auth.dart';
 
 final recentEvents = [
@@ -82,8 +82,8 @@ class _UserPageState extends State<UserPage> {
         body: TabBarView(
           children: [
             YourPage(),
-            Categories_Page(),
-            Organizers_Page(),
+            CategoriesPage(),
+            OrganizersPage(),
           ],
         ),
       ));
@@ -92,7 +92,6 @@ class _UserPageState extends State<UserPage> {
 class DataSearch extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
-    // TODO: implement buildActions
     // actions for app bar
     return [
       IconButton(
@@ -105,7 +104,6 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
     // leading icon on the left of the app bar
     return IconButton(
         icon: AnimatedIcon(
@@ -117,13 +115,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
     // show some result based on the selection
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
     // show when someone searches for something
 
     final suggestionList = query.isEmpty
