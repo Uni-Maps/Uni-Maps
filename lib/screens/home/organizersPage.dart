@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:winhacks/models/models.dart';
+import 'package:winhacks/screens/organizationDetails.dart';
 
 class OrganizersPage extends StatefulWidget {
   final Function toggleView;
@@ -61,11 +62,18 @@ class _OrganizersPageState extends State<OrganizersPage> {
                 ),
               ),
 
-              // Categories
+              // Organizations
               Column(
                 children: [
-                  Row(
-                    children: [organizers()],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              OrganizationDetails())); //route to events page
+                    },
+                    child: Row(
+                      children: [organizers()],
+                    ),
                   ),
                   Row(
                     children: [organizers()],

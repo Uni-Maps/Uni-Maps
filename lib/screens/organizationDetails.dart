@@ -2,15 +2,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:winhacks/models/models.dart';
 
-class Organization_Details extends StatefulWidget {
+class OrganizationDetails extends StatefulWidget {
   // final Function toggleView;
   // Saved_Page({this.toggleView});
 
   @override
-  _OrganizationDetails_State createState() => _OrganizationDetails_State();
+  _OrganizationDetailsState createState() => _OrganizationDetailsState();
 }
 
-class _OrganizationDetails_State extends State<Organization_Details> {
+class _OrganizationDetailsState extends State<OrganizationDetails> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
