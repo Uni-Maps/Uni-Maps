@@ -3,6 +3,7 @@ import 'package:winhacks/screens/map/gmap.dart';
 import 'package:winhacks/screens/home/userPage.dart';
 import 'package:winhacks/screens/home/categoriesPage.dart';
 import 'package:winhacks/screens/saved/savedPage.dart';
+import 'package:winhacks/screens/organizationDetails.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _NavigationBarState extends State<NavigationBar> {
   List<Widget> _widgetOptions = <Widget>[
     UserPage(),
     GMap(),
-    CategoriesPage(),
+    Organization_Details(),
     SavedPage(),
   ];
 
