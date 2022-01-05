@@ -4,7 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:winhacks/screens/home/categoriesPage.dart';
 import 'package:winhacks/screens/home/organizersPage.dart';
 import 'package:winhacks/screens/home/YourPage.dart';
+import 'package:winhacks/screens/notifications.dart';
 import 'package:winhacks/services/auth.dart';
+import 'package:winhacks/screens/createEvent.dart';
 
 final recentEvents = [
   "hi",
@@ -51,6 +53,13 @@ class _UserPageState extends State<UserPage> {
               iconSize: 35,
             ),
             actions: <Widget>[
+              // Add events button ?
+              IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CreateEvents()));
+                  }),
               // Search bar
               IconButton(
                 icon: const Icon(Icons.search),
@@ -61,7 +70,10 @@ class _UserPageState extends State<UserPage> {
               ),
               IconButton(
                 icon: const Icon(Icons.notifications),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => NotificationPage()));
+                },
                 iconSize: 35,
               ),
               IconButton(

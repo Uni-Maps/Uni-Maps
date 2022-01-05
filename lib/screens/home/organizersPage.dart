@@ -34,59 +34,64 @@ class _OrganizersPageState extends State<OrganizersPage> {
           ),
 
           // Sub Title 1
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-                child: Text(
-                  'Who to follow',
-                  style: TextStyle(
-                      fontFamily: "Roboto Bold",
-                      color: Colors.white,
-                      fontSize: 20),
-                ),
-              )),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
-                  child: Text(
-                    'Follow the most popular organizers and get notified when they post events',
-                    style: TextStyle(
-                        fontFamily: "Roboto Regular",
-                        color: Colors.white,
-                        fontSize: 14),
-                  ),
-                ),
-              ),
-
-              // Organizations
-              Column(
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              OrganizationDetails())); //route to events page
-                    },
-                    child: Row(
-                      children: [organizers()],
+                  Container(
+                      child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
+                    child: Text(
+                      'Who to follow',
+                      style: TextStyle(
+                          fontFamily: "Roboto Bold",
+                          color: Colors.white,
+                          fontSize: 20),
+                    ),
+                  )),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
+                      child: Text(
+                        'Follow the most popular organizers and get notified when they post events',
+                        style: TextStyle(
+                            fontFamily: "Roboto Regular",
+                            color: Colors.white,
+                            fontSize: 14),
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [organizers()],
+
+                  // Organizations
+                  Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  OrganizationDetails())); //route to events page
+                        },
+                        child: Row(
+                          children: [organizers()],
+                        ),
+                      ),
+                      Row(
+                        children: [organizers()],
+                      ),
+                      Row(
+                        children: [organizers()],
+                      ),
+                      Row(
+                        children: [organizers()],
+                      )
+                    ],
                   ),
-                  Row(
-                    children: [organizers()],
-                  ),
-                  Row(
-                    children: [organizers()],
-                  )
                 ],
               ),
-            ],
+            ),
           ),
         ]));
   }

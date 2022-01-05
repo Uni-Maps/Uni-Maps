@@ -33,40 +33,59 @@ class _CategoriesPageState extends State<CategoriesPage> {
           ),
 
           // Sub Title 1
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-                child: Text(
-                  'Browse by Category',
-                  style: TextStyle(
-                      fontFamily: "Roboto Bold",
-                      color: Colors.white,
-                      fontSize: 20),
-                ),
-              )),
-
-              // Categories
-              Column(
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [categories(), categories()],
+                  Container(
+                      child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
+                    child: Text(
+                      'Browse by Category',
+                      style: TextStyle(
+                          fontFamily: "Roboto Bold",
+                          color: Colors.white,
+                          fontSize: 20),
+                    ),
+                  )),
+
+                  // Categories
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          categories("Fitness"),
+                          categories("Category")
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          categories("Fitness"),
+                          categories("Category")
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          categories("Fitness"),
+                          categories("Category")
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          categories("Fitness"),
+                          categories("Category")
+                        ],
+                      ),
+                    ],
                   ),
-                  Row(
-                    children: [categories(), categories()],
-                  ),
-                  Row(
-                    children: [categories(), categories()],
-                  ),
-                  Row(
-                    children: [categories(), categories()],
-                  )
                 ],
               ),
-            ],
+            ),
           ),
         ]));
   }

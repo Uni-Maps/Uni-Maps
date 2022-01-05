@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 // Categories model
-categories() {
+categories(name) {
   return (Padding(
     padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
     child: Container(
       width: 150,
+      height: 130,
       margin: EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-              topLeft: Radius.circular(10.0),
-              bottomLeft: Radius.circular(10.0)),
-          // Slider colour
-          color: Color(0xff493657)),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0)),
+        // Slider colour
+      ),
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +25,8 @@ categories() {
             // Gesture Detection goes here
 
             Container(
-              width: 30,
+              width: 150,
+              height: 100,
               child: Image(
                 // Temporary image for the slider
                 // Be careful since the image needs to be an exact size right now
@@ -33,54 +35,9 @@ categories() {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Event Title x',
-                style: TextStyle(
-                    fontFamily: "Lato Bold", color: Colors.white, fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 0, 4),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.calendar_today,
-                    color: Colors.white,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
-                    child: Text(
-                      'Date x',
-                      style: TextStyle(
-                          fontFamily: "Lato Bold",
-                          color: Colors.white,
-                          fontSize: 14),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 0, 4),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.access_time_rounded,
-                    color: Colors.white,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
-                    child: Text(
-                      'Time x',
-                      style: TextStyle(
-                          fontFamily: "Lato Bold",
-                          color: Colors.white,
-                          fontSize: 14),
-                    ),
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+              child: RichText(
+                  text: TextSpan(text: name, style: TextStyle(fontSize: 16))),
             )
           ]),
     ),
@@ -182,7 +139,7 @@ organizers() {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
                     child: Container(
                       width: 200,
                       height: 40,
@@ -453,6 +410,87 @@ events() {
                                     fontFamily: "Lato Regular",
                                     color: Colors.white,
                                     fontSize: 12)),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ]),
+    ),
+  ));
+}
+
+notifications() {
+  return (Padding(
+    padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+    child: Container(
+      width: 350,
+      height: 100,
+      margin: EdgeInsets.symmetric(horizontal: 10.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10.0),
+              bottomRight: Radius.circular(10.0),
+              topLeft: Radius.circular(10.0),
+              bottomLeft: Radius.circular(10.0)),
+          // Slider colour
+          color: Color(0xff493657)),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Gesture Detection goes here
+
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                width: 70,
+                height: 70,
+                child: Image(
+                  // Temporary image for the slider
+                  // Be careful since the image needs to be an exact size right now
+                  image: AssetImage('assets/images/pancake.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+            // Second Container for all the information and button in column format
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Gaming Club",
+                        style: TextStyle(
+                            fontFamily: "Lato Bold",
+                            color: Colors.white,
+                            fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
+                    child: Container(
+                      width: 232,
+                      height: 40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            child: Text(
+                                "Update: We are now rescheduling our gaming club event to next wednesday!",
+                                style: TextStyle(
+                                    fontFamily: "Lato Regular",
+                                    color: Colors.white,
+                                    fontSize: 14)),
                           )
                         ],
                       ),

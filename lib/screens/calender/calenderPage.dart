@@ -50,8 +50,12 @@ class _CalenderPageState extends State<CalenderPage> {
                       fontWeight: FontWeight.bold, color: Colors.white)),
               // Header formatting
               headerStyle: HeaderStyle(
+                  titleCentered: true,
                   formatButtonVisible: false,
-                  titleTextStyle: TextStyle(color: Colors.white, fontSize: 18)),
+                  titleTextStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold)),
               // Calendar colours for dates
               daysOfWeekStyle: DaysOfWeekStyle(
                   weekdayStyle: TextStyle(color: Colors.white),
