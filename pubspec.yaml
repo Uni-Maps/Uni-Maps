@@ -43,6 +43,7 @@ dependencies:
   location: ^3.2.4
 
   carousel_slider: ^3.0.0
+  table_calendar: ^3.0.3
 
 
 dev_dependencies:
@@ -73,6 +74,7 @@ flutter:
     - assets/images/people/welcome_page_person.png
     - assets/images/email.png
     - assets/images/background.png
+    - assets/images/blank_background.png
     - assets/images/pancake.png
     - assets/images/health_and_wellness.png
   
