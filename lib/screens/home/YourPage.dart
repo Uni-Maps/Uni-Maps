@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:winhacks/screens/addEvent.dart';
 import 'package:winhacks/screens/createEvent.dart';
+import 'package:winhacks/screens/eventDetails.dart';
 
 class YourPage extends StatefulWidget {
   final Function toggleView;
@@ -87,7 +88,7 @@ class _YourPage_State extends State<YourPage> {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      AddEvent())); //route to events page
+                                                      EventDetailsPage())); //route to events page
                                         },
                                         child: Container(
                                           width:

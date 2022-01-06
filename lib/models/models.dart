@@ -166,6 +166,7 @@ organizers() {
   ));
 }
 
+// Need to center the title
 topAppBar(String title, double screenWidth) {
   return Container(
       height: 105,
