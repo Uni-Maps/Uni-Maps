@@ -44,6 +44,7 @@ class _SavedTabState extends State<SavedTab> {
 
   @override
   Widget build(BuildContext context) => DefaultTabController(
+    String title = 'Saved';
       length: 3,
       child: Scaffold(
         appBar: AppBar(
