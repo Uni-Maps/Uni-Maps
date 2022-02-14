@@ -166,7 +166,6 @@ organizers() {
   ));
 }
 
-// Need to center the title
 topAppBar(String title, double screenWidth) {
   return Container(
       height: 105,
@@ -175,9 +174,12 @@ topAppBar(String title, double screenWidth) {
         color: Color(0xff493657),
       ),
       child: Row(children: <Widget>[
-        Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
+        // Add 3 columns of equal sizing and put the title in the middle 
+        Column(
+          child: Container(
+          // Changing the screen width 
+          width = screenWidth / 3
+          child: Padding(
               // Change this to children, add another container
               padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
               child: Container(
@@ -190,10 +192,13 @@ topAppBar(String title, double screenWidth) {
                   color: Colors.white,
                 ),
               ),
-            )),
-        Align(
-            alignment: Alignment.center,
-            child: RichText(
+            ))),
+          
+          Column(
+          child: Container(
+          // Changing the screen width 
+          width = screenWidth / 3
+          child: RichText(
               text: TextSpan(children: [
                 TextSpan(
                     text: title,
@@ -202,7 +207,52 @@ topAppBar(String title, double screenWidth) {
                         color: Colors.white,
                         fontSize: 25))
               ]),
-            )),
+            ))),
+        Column(
+          child: Container(
+          // Changing the screen width 
+          width = screenWidth / 3
+          )),
+
+      ]));
+}
+
+// Top App Bar no back button
+topAppBarEmpty(String title, double screenWidth) {
+  return Container(
+      height: 105,
+      // Add padding
+      decoration: new BoxDecoration(
+        color: Color(0xff493657),
+      ),
+      child: Row(children: <Widget>[
+        // Add 3 columns of equal sizing and put the title in the middle 
+        Column(
+          child: Container(
+            width = screenWidth / 3
+            )
+          ),
+          
+          Column(
+          child: Container(
+          // Changing the screen width 
+          width = screenWidth / 3
+          child: RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                    text: title,
+                    style: TextStyle(
+                        fontFamily: "Lato Bold",
+                        color: Colors.white,
+                        fontSize: 25))
+              ]),
+            ))),
+        Column(
+          child: Container(
+          // Changing the screen width 
+          width = screenWidth / 3
+          )),
+
       ]));
 }
 
