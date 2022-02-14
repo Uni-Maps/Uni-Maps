@@ -8,6 +8,8 @@ import 'package:winhacks/screens/notifications.dart';
 import 'package:winhacks/services/auth.dart';
 import 'package:winhacks/screens/createEvent.dart';
 import 'package:winhacks/screens/saved/savedPage.dart';
+import 'package:winhacks/screens/saved/interestedPage.dart';
+import 'package:winhacks/screens/saved/pastPage.dart';
 
 final recentEvents = [
   "hi",
@@ -50,11 +52,7 @@ class _SavedTabState extends State<SavedTab> {
         appBar: AppBar(
           title: Title("Saved"),
             elevation: 0,
-            leading: IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
-              iconSize: 35,
-            ),
+            
             actions: <Widget>[
               // Buttons go here
             ],
@@ -70,8 +68,8 @@ class _SavedTabState extends State<SavedTab> {
           children: [
             // Replace with the appropriate page
             SavedPage(),
-            CategoriesPage(),
-            OrganizersPage(),
+            PastPage(),
+            InterestedPage(),
           ],
         ),
       ));
