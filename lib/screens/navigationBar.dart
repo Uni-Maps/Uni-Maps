@@ -3,6 +3,7 @@ import 'package:winhacks/screens/calender/calenderPage.dart';
 import 'package:winhacks/screens/map/gmap.dart';
 import 'package:winhacks/screens/home/userPage.dart';
 import 'package:winhacks/screens/saved/savedPage.dart';
+import 'package:winhacks/screens/saved/savedTab.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _NavigationBarState extends State<NavigationBar> {
     UserPage(),
     GMap(),
     CalenderPage(),
-    SavedPage(),
+    SavedTab(),
   ];
 
   void _onItemTap(int index) {

@@ -10,6 +10,7 @@ import 'package:winhacks/screens/createEvent.dart';
 import 'package:winhacks/screens/saved/savedPage.dart';
 import 'package:winhacks/screens/saved/interestedPage.dart';
 import 'package:winhacks/screens/saved/pastPage.dart';
+import 'package:winhacks/models/models.dart';
 
 final recentEvents = [
   "hi",
@@ -31,9 +32,9 @@ final events = [
   "greatttttt",
 ];
 
-class UserPage extends StatefulWidget {
+class SavedTab extends StatefulWidget {
   final Function toggleView;
-  UserPage({this.toggleView});
+  SavedTab({this.toggleView});
 
   @override
   _SavedTabState createState() => _SavedTabState();
@@ -46,13 +47,10 @@ class _SavedTabState extends State<SavedTab> {
 
   @override
   Widget build(BuildContext context) => DefaultTabController(
-    String title = 'Saved';
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Title("Saved"),
             elevation: 0,
-            
             actions: <Widget>[
               // Buttons go here
             ],

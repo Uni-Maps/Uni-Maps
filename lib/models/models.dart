@@ -177,8 +177,7 @@ topAppBar(String title, double screenWidth) {
         // Add 3 columns of equal sizing and put the title in the middle
         Column(children: <Widget>[
           Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+
               // Changing the screen width
               width: screenWidth / 3,
               child: Padding(
@@ -201,8 +200,7 @@ topAppBar(String title, double screenWidth) {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
+
                   // Changing the screen width
                   width: screenWidth / 3,
                   child: RichText(
@@ -219,8 +217,7 @@ topAppBar(String title, double screenWidth) {
             ]),
         Column(children: <Widget>[
           Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+
               // Changing the screen width
               width: screenWidth / 3)
         ]),
@@ -239,8 +236,6 @@ topAppBarEmpty(String title, double screenWidth) {
         // Add 3 columns of equal sizing and put the title in the middle
         Column(children: <Widget>[
           Container(
-            decoration:
-                BoxDecoration(border: Border.all(color: Colors.blueAccent)),
             // Changing the screen width
             width: screenWidth / 3,
           )
@@ -251,8 +246,7 @@ topAppBarEmpty(String title, double screenWidth) {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
+
                   // Changing the screen width
                   width: screenWidth / 3,
                   child: RichText(
@@ -269,8 +263,7 @@ topAppBarEmpty(String title, double screenWidth) {
             ]),
         Column(children: <Widget>[
           Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
+
               // Changing the screen width
               width: screenWidth / 3)
         ]),
