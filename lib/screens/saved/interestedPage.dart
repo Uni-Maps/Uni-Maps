@@ -37,7 +37,7 @@ class _InterestedPageState extends State<InterestedPage> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                  topAppBar(title, screenWidth),
+                  topAppBarEmpty(title, screenWidth),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
                     child: Text(
