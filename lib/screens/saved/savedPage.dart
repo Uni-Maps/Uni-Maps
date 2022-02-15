@@ -13,7 +13,7 @@ class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    double screenWidth = MediaQuery.of(context).size.width * 0.8;
+    double screenWidth = MediaQuery.of(context).size.width;
     String title = 'Saved';
 
     return Scaffold(
@@ -37,7 +37,7 @@ class _SavedPageState extends State<SavedPage> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                  topAppBar(title, screenWidth),
+                  topAppBarEmpty(title, screenWidth),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
                     child: Text(

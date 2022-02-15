@@ -38,7 +38,7 @@ class _CalenderPageState extends State<CalenderPage> {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            topAppBar(title, screenWidth),
+            topAppBarEmpty(title, screenWidth),
             TableCalendar(
               // Calendar colours
               calendarStyle: CalendarStyle(

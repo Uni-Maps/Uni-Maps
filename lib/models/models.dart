@@ -177,11 +177,12 @@ topAppBar(String title, double screenWidth) {
         // Add 3 columns of equal sizing and put the title in the middle
         Column(children: <Widget>[
           Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
               // Changing the screen width
               width: screenWidth / 3,
               child: Padding(
-                // Change this to children, add another container
-                padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
+                padding: EdgeInsets.fromLTRB(15, 25, 15, 25),
                 child: Container(
                   child: IconButton(
                     icon: Icon(Icons.arrow_back),
@@ -195,23 +196,31 @@ topAppBar(String title, double screenWidth) {
               ))
         ]),
 
+        Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  // Changing the screen width
+                  width: screenWidth / 3,
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: title,
+                          style: TextStyle(
+                              fontFamily: "Lato Bold",
+                              color: Colors.white,
+                              fontSize: 25))
+                    ]),
+                  ))
+            ]),
         Column(children: <Widget>[
           Container(
-              // Changing the screen width
-              width: screenWidth / 3,
-              child: RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: title,
-                      style: TextStyle(
-                          fontFamily: "Lato Bold",
-                          color: Colors.white,
-                          fontSize: 25))
-                ]),
-              ))
-        ]),
-        Column(children: <Widget>[
-          Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
               // Changing the screen width
               width: screenWidth / 3)
         ]),
@@ -230,28 +239,38 @@ topAppBarEmpty(String title, double screenWidth) {
         // Add 3 columns of equal sizing and put the title in the middle
         Column(children: <Widget>[
           Container(
+            decoration:
+                BoxDecoration(border: Border.all(color: Colors.blueAccent)),
             // Changing the screen width
             width: screenWidth / 3,
           )
         ]),
 
+        Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent)),
+                  // Changing the screen width
+                  width: screenWidth / 3,
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: title,
+                          style: TextStyle(
+                              fontFamily: "Lato Bold",
+                              color: Colors.white,
+                              fontSize: 25))
+                    ]),
+                  ))
+            ]),
         Column(children: <Widget>[
           Container(
-              // Changing the screen width
-              width: screenWidth / 3,
-              child: RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: title,
-                      style: TextStyle(
-                          fontFamily: "Lato Bold",
-                          color: Colors.white,
-                          fontSize: 25))
-                ]),
-              ))
-        ]),
-        Column(children: <Widget>[
-          Container(
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.blueAccent)),
               // Changing the screen width
               width: screenWidth / 3)
         ]),
