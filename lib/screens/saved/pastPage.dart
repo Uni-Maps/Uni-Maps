@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winhacks/models/models.dart';
 
-class SavedPage extends StatefulWidget {
+class PastPage extends StatefulWidget {
   // final Function toggleView;
   // Past_Page({this.toggleView});
 
